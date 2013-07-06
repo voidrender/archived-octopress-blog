@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://overacker.me
+title: Isaac Overacker
+subtitle: while (self.isAwake) { [code write]; }
+author: Isaac Overacker
 simple_search: http://google.com/search
-description:
+description: Blah blah blah blah blah yadda yadda yadda.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -69,7 +69,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: @isaacoveracker
 twitter_tweet_button: true
 
 # Google +1
@@ -97,4 +97,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
