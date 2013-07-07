@@ -4,10 +4,10 @@
 
 url: http://overacker.me
 title: Isaac Overacker
-subtitle: 
+subtitle: My thoughts on design & development
 author: Isaac Overacker
 simple_search: http://google.com/search
-description: Blah blah blah blah blah yadda yadda yadda.
+description: My thoughts on design & development.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -63,8 +63,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
-github_repo_count: 0
+github_user: ioveracker
+github_repo_count: 3
 github_show_profile_link: true
 github_skip_forks: true
 
@@ -73,7 +73,7 @@ twitter_user: isaacoveracker
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -94,7 +94,7 @@ disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-42275862-1
 
 # Facebook Like
 facebook_like: true
