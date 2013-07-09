@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-07T22:48:18-07:00</updated>
+  <updated>2013-07-09T00:35:30-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -15,11 +15,36 @@
   
   <entry>
     
-    <title type="html"><![CDATA[Hello, Octopress!]]></title>
-    <link href="http://overacker.me/blog/2013/07/06/hellooctopress/"/>
+    <title type="html"><![CDATA[Hello again.]]></title>
+    <link href="http://overacker.me/blog/2013/07/08/sample2/"/>
     
-    <updated>2013-07-06T15:56:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/06/hellooctopress</id>
+    <updated>2013-07-08T17:37:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/07/08/sample2</id>
+    
+    <content type="html"><![CDATA[<p>Artisan <a href="http://en.wikipedia.org/wiki/Wes_Anderson">Wes Anderson</a> Bushwick 90&rsquo;s twee Neutra, kogi squid pickled raw denim. 8-bit literally butcher mustache, Terry Richardson put a bird on it selfies Vice organic. Tote bag tousled High Life Portland VHS skateboard. Bushwick church-key brunch, Terry Richardson fashion axe yr single-origin coffee beard. Semiotics tattooed Schlitz, meggings shabby chic photo booth salvia messenger bag master cleanse McSweeney&rsquo;s fingerstache mustache. Raw denim single-origin coffee helvetica, Etsy intelligentsia aesthetic meh. Fap pour-over gastropub, sustainable asymmetrical pug meggings tattooed letterpress put a bird on it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Howdy.&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bespoke small batch authentic 3 wolf moon, fanny pack post-ironic pop-up kitsch cliche wolf mustache. Single-origin coffee chillwave you probably haven&rsquo;t heard of them, tattooed beard tote bag Portland brunch YOLO blue bottle selvage sriracha authentic intelligentsia typewriter. Mumblecore brunch Tonx, direct trade selfies 3 wolf moon Cosby sweater letterpress. Stumptown lomo yr, seitan four loko biodiesel keytar 8-bit Bushwick 90&rsquo;s you probably haven&rsquo;t heard of them Carles. Biodiesel whatever kale chips seitan lomo. Typewriter PBR vinyl, Truffaut seitan semiotics stumptown cred fashion axe farm-to-table church-key swag. Farm-to-table selfies pickled, VHS swag put a bird on it vegan photo booth shoreditch blue bottle Neutra bitters pour-over disrupt hoodie.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install rbenv
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+    <title type="html"><![CDATA[Hello, Octopress! Or: how to write a post with an excessively long title.]]></title>
+    <link href="http://overacker.me/blog/2012/09/06/hellooctopress/"/>
+    
+    <updated>2012-09-06T15:56:00-07:00</updated>
+    <id>http://overacker.me/blog/2012/09/06/hellooctopress</id>
     
     <content type="html"><![CDATA[<p>Bicycle rights flexitarian squid street art, polaroid Cosby sweater put a bird on it trust fund single-origin coffee actually High Life. Williamsburg chillwave quinoa, VHS Brooklyn pop-up flannel typewriter salvia shabby chic synth selvage. Letterpress deep v gastropub 3 wolf moon typewriter kale chips, Vice beard bitters seitan. PBR mumblecore twee seitan fap. Shabby chic food truck cliche banh mi. Pickled tousled 8-bit, next level seitan keffiyeh whatever gluten-free photo booth Echo Park blog tote bag. Austin craft beer church-key Echo Park bitters, beard kitsch fashion axe actually aesthetic sartorial Pinterest leggings keytar.</p>
 

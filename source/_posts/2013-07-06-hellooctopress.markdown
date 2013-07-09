@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Hello, Octopress!"
-date: 2013-07-06 15:56
+title: "Hello, Octopress! Or: how to write a post with an excessively long title."
+date: 2012-09-06 15:56
 comments: true
 categories: 
 ---
