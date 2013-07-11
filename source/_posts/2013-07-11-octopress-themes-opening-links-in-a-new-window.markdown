@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Octopress Themes:<br>Opening Links in a New Window"
+title: "Octopress Themes: Opening Links in a New Window"
 date: 2013-07-11 14:00
 comments: true
 categories: 
