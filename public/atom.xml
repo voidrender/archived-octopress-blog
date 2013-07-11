@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-10T18:45:14-07:00</updated>
+  <updated>2013-07-11T16:52:53-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+    <title type="html"><![CDATA[Octopress Themes:<br>Opening Links in a New Window]]></title>
+    <link href="http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
+    
+    <updated>2013-07-11T14:00:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
+    
+    <content type="html"><![CDATA[<p>I just rolled out a change to the <a href="https://github.com/ioveracker/mnml">mnml</a> theme to cause links to be opened in a new window.  If you&rsquo;re looking to do the same thing for your <a href="http://octopress.org">Octopress</a> theme, it requires a simple change to the <code>/source/javascripts/octopress.js</code> file.  Open that file and add the following to the <a href="http://learn.jquery.com/using-jquery-core/document-ready/">$(document).ready()</a> function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="c1">// You probably already have some code here.</span>
+</span><span class='line'>    <span class="c1">// Just add this to the end of the function.</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span class='line'>                <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
+</span><span class='line'>                <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span> <span class="s1">&#39;_blank&#39;</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You could also do this in any web app that uses <a href="http://jquery.com">jQuery</a>, of course.</p>
+
+<p>(Hat-tip to <a href="http://www.adrikodde.nl/blog/2012/octopress-links-new-window/">Addri Kodde</a> for posting a snippet about this.)</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
