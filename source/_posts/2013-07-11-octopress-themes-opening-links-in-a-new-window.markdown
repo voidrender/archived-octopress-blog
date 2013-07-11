@@ -25,4 +25,4 @@ $(document).ready(function(){
 ```
 You could also do this in any web app that uses [jQuery](http://jquery.com), of course.
 
-(Hat-tip to [Addri Kodde](http://www.adrikodde.nl/blog/2012/octopress-links-new-window/) for posting a snippet about this.)
+(Hat-tip to [Adri Kodde](http://www.adrikodde.nl/blog/2012/octopress-links-new-window/) for posting a snippet about this.)
