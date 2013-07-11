@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-09T16:45:30-07:00</updated>
+  <updated>2013-07-10T18:31:05-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -15,55 +15,77 @@
   
   <entry>
     
-    <title type="html"><![CDATA[Hello again.]]></title>
-    <link href="http://overacker.me/blog/2013/07/08/sample2/"/>
+    <title type="html"><![CDATA[Managing Ruby Environments on OS X: Getting Started with rbenv]]></title>
+    <link href="http://overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
     
-    <updated>2013-07-08T17:37:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/08/sample2</id>
+    <updated>2013-07-10T00:00:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
     
-    <content type="html"><![CDATA[<p>Artisan <a href="http://en.wikipedia.org/wiki/Wes_Anderson">Wes Anderson</a> Bushwick 90&rsquo;s twee Neutra, kogi squid pickled raw denim. 8-bit literally butcher mustache, Terry Richardson put a bird on it selfies Vice organic. Tote bag tousled High Life Portland VHS skateboard. Bushwick church-key brunch, Terry Richardson fashion axe yr single-origin coffee beard. Semiotics tattooed Schlitz, meggings shabby chic photo booth salvia messenger bag master cleanse McSweeney&rsquo;s fingerstache mustache. Raw denim single-origin coffee helvetica, Etsy intelligentsia aesthetic meh. Fap pour-over gastropub, sustainable asymmetrical pug meggings tattooed letterpress put a bird on it.</p>
+    <content type="html"><![CDATA[<p>If you&rsquo;ve done any development on OS X, chances are you&rsquo;ve run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Howdy.&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<h1>Installation</h1>
+
+<p>There are several paths to installing rbenv.  The simplest is to use <a href="http://mxcl.github.io/homebrew/">homebrew</a>.  (If you don&rsquo;t have homebrew, it&rsquo;s easy to install.  Go <a href="http://mxcl.github.io/homebrew/">here</a>.)</p>
+
+<p>First, make sure your homebrew is up-to-date.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Bespoke small batch authentic 3 wolf moon, fanny pack post-ironic pop-up kitsch cliche wolf mustache. Single-origin coffee chillwave you probably haven&rsquo;t heard of them, tattooed beard tote bag Portland brunch YOLO blue bottle selvage sriracha authentic intelligentsia typewriter. Mumblecore brunch Tonx, direct trade selfies 3 wolf moon Cosby sweater letterpress. Stumptown lomo yr, seitan four loko biodiesel keytar 8-bit Bushwick 90&rsquo;s you probably haven&rsquo;t heard of them Carles. Biodiesel whatever kale chips seitan lomo. Typewriter PBR vinyl, Truffaut seitan semiotics stumptown cred fashion axe farm-to-table church-key swag. Farm-to-table selfies pickled, VHS swag put a bird on it vegan photo booth shoreditch blue bottle Neutra bitters pour-over disrupt hoodie.</p>
+<p>Then, install rbenv and ruby-build.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install rbenv
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-    <title type="html"><![CDATA[Hello, Octopress! Or: how to write a post with an excessively long title.]]></title>
-    <link href="http://overacker.me/blog/2012/09/06/hellooctopress/"/>
-    
-    <updated>2012-09-06T15:56:00-07:00</updated>
-    <id>http://overacker.me/blog/2012/09/06/hellooctopress</id>
-    
-    <content type="html"><![CDATA[<p>Bicycle rights flexitarian squid street art, polaroid Cosby sweater put a bird on it trust fund single-origin coffee actually High Life. Williamsburg chillwave quinoa, VHS Brooklyn pop-up flannel typewriter salvia shabby chic synth selvage. Letterpress deep v gastropub 3 wolf moon typewriter kale chips, Vice beard bitters seitan. PBR mumblecore twee seitan fap. Shabby chic food truck cliche banh mi. Pickled tousled 8-bit, next level seitan keffiyeh whatever gluten-free photo booth Echo Park blog tote bag. Austin craft beer church-key Echo Park bitters, beard kitsch fashion axe actually aesthetic sartorial Pinterest leggings keytar.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="c1">// Say hello</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">person</span> <span class="k">in</span> <span class="n">world</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>   <span class="p">[</span><span class="n">self</span> <span class="nl">sayHelloTo:</span><span class="n">person</span><span class="p">];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install rbenv
+</span><span class='line'>brew install ruby-build</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Gluten-free seitan cliche, hella blue bottle sartorial jean shorts cray post-ironic ethical meh mixtape narwhal hashtag irony. Art party banjo four loko pop-up fanny pack seitan. Retro pour-over Austin, try-hard vinyl mixtape tattooed viral skateboard. American apparel mlkshk lomo McSweeney&rsquo;s. Truffaut quinoa fixie thundercats, keytar direct trade typewriter. Ethical Neutra Bushwick, High Life cardigan food truck umami. Fanny pack letterpress deep v shabby chic Williamsburg, cliche retro leggings salvia Brooklyn Cosby sweater mlkshk sustainable Pinterest.</p>
+<p>Once it is done installing, you need to update your profile.  This is generally ~/.bash_profile.  Open it in your favorite editor, and add the following line.</p>
 
-<p>Try-hard fingerstache seitan High Life. Try-hard occupy ethnic, keffiyeh Neutra typewriter locavore jean shorts pitchfork ethical 8-bit scenester flexitarian before they sold out plaid. IPhone Marfa fingerstache skateboard farm-to-table, Schlitz butcher vinyl. Wolf literally pork belly Godard. Selfies aesthetic photo booth +1, narwhal messenger bag you probably haven&rsquo;t heard of them jean shorts Vice lomo sustainable bitters. Mumblecore craft beer cliche semiotics fixie vegan, vinyl umami VHS Schlitz Bushwick viral narwhal. Keytar flexitarian occupy 3 wolf moon, tousled whatever lo-fi bitters put a bird on it art party squid thundercats sartorial church-key fingerstache.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>eval "$(rbenv init -)"</span></code></pre></td></tr></table></div></figure>
 
-<p>PBR locavore beard messenger bag, wolf ugh Marfa pour-over skateboard aesthetic put a bird on it YOLO. High Life organic gentrify cliche food truck dreamcatcher. Irony retro sustainable small batch pop-up. Etsy literally meggings cornhole, you probably haven&rsquo;t heard of them irony Tonx cray narwhal gentrify food truck disrupt forage. Lo-fi put a bird on it Truffaut Austin. Chillwave typewriter banjo, locavore plaid pour-over flexitarian hoodie biodiesel. Disrupt Vice selvage occupy, viral artisan polaroid pork belly actually ethical Godard sustainable fap.</p>
+
+<p>Now execute that in your current bash session by using <code>source</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rbenv will be setup and ready to use.</p>
+
+<h1>rbenv Basics</h1>
+
+<p>The only installation of Ruby that you will have in rbenv at this point is the system version.  If you type the following command, it will show you what versions are installed.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv versions</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will show an asterisk next to the version rbenv is currently using.  To install a new version of Ruby, use the <code>rbenv install</code> command.  For example, to install ruby 1.9.3-p194:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv install 1.9.3-p194
+</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will install version 1.9.3-p194 under ~/.rbenv/versions/.  The <code>rehash</code> command tells rbenv about the new executables.  You should use this command any time you install a new version of Ruby or install a gem that includes commands.  (You can read about the rehashing process <a href="https://github.com/sstephenson/rbenv#understanding-shims">here</a>.)  You can use this version globally by using the <code>global</code> command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv global 1.9.3-p194</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or, if you&rsquo;d like to specify that this version should be used in a specific directory, use the <code>local</code> command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv local 1.9.3-p194</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will create a file named .ruby-version in the current directory that states the version of Ruby to use while in this directory.  Rbenv looks for this file when you use Ruby commands.  This provides the ability to ensure everyone on your team is using the same version of Ruby when developing your app.</p>
+
+<p>That&rsquo;s it, you&rsquo;re up and running with rbenv!  For additional details and advanced features of rbenv, check out the official <a href="https://github.com/sstephenson/rbenv">GitHub repository</a>.</p>
 ]]></content>
     
   </entry>
