@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-11T16:55:55-07:00</updated>
+  <updated>2013-07-11T17:04:59-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -56,7 +56,7 @@
 
 <p>You could also do this in any web app that uses <a href="http://jquery.com">jQuery</a>, of course.</p>
 
-<p>(Hat-tip to <a href="http://www.adrikodde.nl/blog/2012/octopress-links-new-window/">Addri Kodde</a> for posting a snippet about this.)</p>
+<p>(Hat-tip to <a href="http://www.adrikodde.nl/blog/2012/octopress-links-new-window/">Adri Kodde</a> for posting a snippet about this.)</p>
 ]]></content>
     
   </entry>
