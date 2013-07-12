@@ -3,7 +3,7 @@ layout: post
 title: "Octopress Themes: Opening Links in a New Window"
 date: 2013-07-11 14:00
 comments: true
-categories: 
+categories: javascript jquery octopress mnml
 ---
 I just rolled out a change to the [mnml](https://github.com/ioveracker/mnml) theme to cause links to be opened in a new window.  If you're looking to do the same thing for your [Octopress](http://octopress.org) theme, it requires a simple change to the `/source/javascripts/octopress.js` file.  Open that file and add the following to the [$(document).ready()](http://learn.jquery.com/using-jquery-core/document-ready/) function:
 

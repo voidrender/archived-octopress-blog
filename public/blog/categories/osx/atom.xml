@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: osx | Isaac Overacker]]></title>
+  <link href="http://overacker.me/blog/categories/osx/atom.xml" rel="self"/>
+  <link href="http://overacker.me/"/>
+  <updated>2013-07-12T10:03:56-07:00</updated>
+  <id>http://overacker.me/</id>
+  <author>
+    <name><![CDATA[Isaac Overacker]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Managing Ruby Environments on OS X: Getting Started with rbenv]]></title>
+    <link href="http://overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
+    <updated>2013-07-10T00:00:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;ve done any development on OS X, chances are you&rsquo;ve run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.</p>
+
+<h1>Installation</h1>
+
+<p>There are several paths to installing rbenv.  The simplest is to use <a href="http://mxcl.github.io/homebrew/">homebrew</a>.  (If you don&rsquo;t have homebrew, it&rsquo;s easy to install.  Go <a href="http://mxcl.github.io/homebrew/">here</a>.)</p>
+
+<p>First, make sure your homebrew is up-to-date.</p>
+
+<p><code>
+brew update
+</code></p>
+
+<p>Then, install rbenv and ruby-build.</p>
+
+<p><code>
+brew install rbenv
+brew install ruby-build
+</code></p>
+
+<p>Once it is done installing, you need to update your profile.  This is generally ~/.bash_profile.  Open it in your favorite editor, and add the following line.</p>
+
+<p><code>
+eval "$(rbenv init -)"
+</code></p>
+
+<p>Now execute that in your current bash session by using <code>source</code>.</p>
+
+<p><code>
+source ~/.bash_profile
+</code>
+Rbenv will be setup and ready to use.</p>
+
+<h1>rbenv Basics</h1>
+
+<p>The only installation of Ruby that you will have in rbenv at this point is the system version.  If you type the following command, it will show you what versions are installed.</p>
+
+<p><code>
+rbenv versions
+</code></p>
+
+<p>This will show an asterisk next to the version rbenv is currently using.  To install a new version of Ruby, use the <code>rbenv install</code> command.  For example, to install ruby 1.9.3-p194:</p>
+
+<p><code>
+rbenv install 1.9.3-p194
+rbenv rehash
+</code></p>
+
+<p>This will install version 1.9.3-p194 under ~/.rbenv/versions/.  The <code>rehash</code> command tells rbenv about the new executables.  You should use this command any time you install a new version of Ruby or install a gem that includes commands.  (You can read about the rehashing process <a href="https://github.com/sstephenson/rbenv#understanding-shims">here</a>.)  You can use this version globally by using the <code>global</code> command:</p>
+
+<p><code>
+rbenv global 1.9.3-p194
+</code></p>
+
+<p>Or, if you&rsquo;d like to specify that this version should be used in a specific directory, use the <code>local</code> command:</p>
+
+<p><code>
+rbenv local 1.9.3-p194
+</code></p>
+
+<p>This will create a file named .ruby-version in the current directory that states the version of Ruby to use while in this directory.  Rbenv looks for this file when you use Ruby commands.  This provides the ability to ensure everyone on your team is using the same version of Ruby when developing your app.</p>
+
+<p>That&rsquo;s it, you&rsquo;re up and running with rbenv!  For additional details and advanced features of rbenv, check out the official <a href="https://github.com/sstephenson/rbenv">GitHub repository</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
