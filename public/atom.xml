@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-11T17:41:47-07:00</updated>
+  <updated>2013-07-12T09:38:38-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+    <title type="html"><![CDATA[technorati]]></title>
+    <link href="http://overacker.me/blog/2013/07/12/technorati/"/>
+    
+    <updated>2013-07-12T09:38:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/07/12/technorati</id>
+    
+    <content type="html"><![CDATA[<p>This is just a post to claim my blog on technorati.</p>
+
+<p>VWGEN9EPTJUN</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
