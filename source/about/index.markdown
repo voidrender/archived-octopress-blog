@@ -5,7 +5,8 @@ comments: true
 sharing: true
 footer: false
 ---
-This is the personal blog of Isaac Overacker.  I write about software development, design, and related topics with a focus on iOS.  You can find me on Twitter as [@isaacoveracker](http://twitter.com/isaacoveracker) and GitHub as [ioveracker](http://github.com/ioveracker).
+##Hi, I'm Isaac Overacker.
+I write about software development, design, and related topics here.  I generally focus on iOS and iPhone development.  You can find me on Twitter as [@isaacoveracker](http://twitter.com/isaacoveracker) and GitHub as [ioveracker](http://github.com/ioveracker).
 
 I co-founded [Listn, LLC](http://listn.net) and developed [Listn](http://appstore.com/listn) for the iPhone.  I also write software in the healthcare informatics space.
 
