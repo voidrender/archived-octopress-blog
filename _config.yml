@@ -9,6 +9,13 @@ author: Isaac Overacker
 simple_search: http://google.com/search
 description: My thoughts on development & design
 
+# ----------------------- #
+#      mnml configs       #
+# ----------------------- #
+mnml_mailto: isaac@overacker.me
+mnml_host_name: Heroku
+mnml_host_url: http://heroku.com
+
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
