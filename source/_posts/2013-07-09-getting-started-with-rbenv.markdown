@@ -44,23 +44,23 @@ The only installation of Ruby that you will have in rbenv at this point is the s
 rbenv versions
 ```
 
-This will show an asterisk next to the version rbenv is currently using.  To install a new version of Ruby, use the `rbenv install` command.  For example, to install ruby 1.9.3-p194:
+This will show an asterisk next to the version rbenv is currently using.  To install a new version of Ruby, use the `rbenv install` command.  For example, to install Ruby 2.0.0-p247:
 
 ```
-rbenv install 1.9.3-p194
+rbenv install 2.0.0-p247
 rbenv rehash
 ```
 
-This will install version 1.9.3-p194 under ~/.rbenv/versions/.  The `rehash` command tells rbenv about the new executables.  You should use this command any time you install a new version of Ruby or install a gem that includes commands.  (You can read about the rehashing process [here](https://github.com/sstephenson/rbenv#understanding-shims).)  You can use this version globally by using the `global` command:
+This will install version 2.0.0-p247 under ~/.rbenv/versions/.  The `rehash` command tells rbenv about the new executables.  You should use this command any time you install a new version of Ruby or install a gem that includes commands.  (You can read about the rehashing process [here](https://github.com/sstephenson/rbenv#understanding-shims).)  You can use this version globally by using the `global` command:
 
 ```
-rbenv global 1.9.3-p194
+rbenv global 2.0.0-p247
 ```
 
 Or, if you'd like to specify that this version should be used in a specific directory, use the `local` command:
 
 ```
-rbenv local 1.9.3-p194
+rbenv local 2.0.0-p247
 ```
 
 This will create a file named .ruby-version in the current directory that states the version of Ruby to use while in this directory.  Rbenv looks for this file when you use Ruby commands.  This provides the ability to ensure everyone on your team is using the same version of Ruby when developing your app.
