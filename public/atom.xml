@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-29T10:09:12-07:00</updated>
+  <updated>2013-07-29T11:26:00-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -105,6 +105,8 @@
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>open YourProject.xcworkspace</span></code></pre></td></tr></table></div></figure>
 
+
+<p>Whenever you add a new pod to your Podfile, just run <code>pod install</code> again to regenerate the workspace.</p>
 
 <h1>Source Control</h1>
 

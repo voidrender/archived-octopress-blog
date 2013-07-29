@@ -74,6 +74,7 @@ This will download the pods and build a Xcode workspace that includes a Pods tar
 open YourProject.xcworkspace
 {% endcodeblock %}
 
+Whenever you add a new pod to your Podfile, just run `pod install` again to regenerate the workspace.
 #Source Control
 I like to keep the pods out of my source code repositories.  You can update the ignore file for your source control repository to exclude the Pods/ directory created by CocoaPods.
 
