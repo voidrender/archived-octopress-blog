@@ -56,7 +56,7 @@ You can also prefix the version number with a [version constraint](http://docs.r
 {% codeblock Podfile %}
 platform :iOS
 pod 'LastFm'
-pod 'TestFlightSDK', ~> '1.2'
+pod 'TestFlightSDK', '~> 1.2'
 {% endcodeblock %}
 
 Finding the pods you need for your project is simple thanks to the search function on the [CocoaPods site](http://cocoapods.org/).

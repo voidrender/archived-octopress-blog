@@ -4,7 +4,7 @@
   <title><![CDATA[Category: dependency-management | Isaac Overacker]]></title>
   <link href="http://overacker.me/blog/categories/dependency-management/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-29T15:56:19-07:00</updated>
+  <updated>2013-07-31T13:29:36-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -78,7 +78,7 @@
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
 </span><span class='line'>pod &lsquo;LastFm&rsquo;
-</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, ~> &lsquo;1.2&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;~> 1.2&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Finding the pods you need for your project is simple thanks to the search function on the <a href="http://cocoapods.org/">CocoaPods site</a>.</p>
 
