@@ -38,15 +38,15 @@ Dependencies are tracked in a special plaintext file named Podfile.  You should 
 E.g., a very simple iOS Podfile specifying the latest LastFm and TestFlightSDK frameworks:
 
 {% codeblock Podfile %}
-platform :iOS
+platform :ios
 pod 'LastFm'
 pod 'TestFlightSDK'
 {% endcodeblock %}
 
-If you want to specify the version for a pod, simply append the version number like so:
+Note that the platform is case sensitive.  If you want to specify the version for a pod, simply append the version number like so:
 
 {% codeblock Podfile %}
-platform :iOS
+platform :ios
 pod 'LastFm'
 pod 'TestFlightSDK', '1.2.6'
 {% endcodeblock %}
@@ -54,7 +54,7 @@ pod 'TestFlightSDK', '1.2.6'
 You can also prefix the version number with a [version constraint](http://docs.rubygems.org/read/chapter/16#page74) to indicate a range of versions.
 
 {% codeblock Podfile %}
-platform :iOS
+platform :ios
 pod 'LastFm'
 pod 'TestFlightSDK', '~> 1.2'
 {% endcodeblock %}
