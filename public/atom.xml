@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-07-31T13:29:36-07:00</updated>
+  <updated>2013-08-01T08:38:26-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -55,7 +55,7 @@
 
 <p>Dependencies are tracked in a special plaintext file named Podfile.  You should create this file in the same directory as your Xcode project.  The first line of this file tells CocoaPods what platform your project is targeting (iOS or OS X), and the subsequent lines list the dependencies for your project.</p>
 
-<p>E.g., a very simple iOS Podfile specifying the latest JSONKit and Reachability frameworks:</p>
+<p>E.g., a very simple iOS Podfile specifying the latest LastFm and TestFlightSDK frameworks:</p>
 
 <figure class='code'><figcaption><span>Podfile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

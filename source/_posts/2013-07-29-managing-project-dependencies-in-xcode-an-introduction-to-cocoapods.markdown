@@ -35,7 +35,7 @@ Installation is that simple.  You're ready to get started.
 
 Dependencies are tracked in a special plaintext file named Podfile.  You should create this file in the same directory as your Xcode project.  The first line of this file tells CocoaPods what platform your project is targeting (iOS or OS X), and the subsequent lines list the dependencies for your project.
 
-E.g., a very simple iOS Podfile specifying the latest JSONKit and Reachability frameworks:
+E.g., a very simple iOS Podfile specifying the latest LastFm and TestFlightSDK frameworks:
 
 {% codeblock Podfile %}
 platform :iOS
