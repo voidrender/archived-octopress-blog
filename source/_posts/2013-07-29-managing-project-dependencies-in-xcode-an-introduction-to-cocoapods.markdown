@@ -8,6 +8,7 @@ categories: Xcode cocoatouch iOS OSX dependency-management
 The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on [GitHub](http://github.com), which has improved a lot in the last few years to streamline the process.  With [GitHub for Mac](http://mac.github.com), it's easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into *your* Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.
 
 It doesn't have to be this way.
+<!-- more -->
 
 #CocoaPods
 [CocoaPods](http://cocoapods.org) is the best way to manage library dependencies with Xcode.  It's still in the alpha phase, but it's continually being improved.  With CocoaPods, you can easily manage your project dependencies, even specifying the specific version number for each.  This is all tracked in a plaintext file, so you can keep this in your source repository and your whole team will automatically be in sync.  As an added bonus, you won't have to keep the projects in your source repository, so you can keep your repository's footprint small.

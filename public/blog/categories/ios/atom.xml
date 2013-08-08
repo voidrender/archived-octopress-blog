@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Isaac Overacker]]></title>
   <link href="http://overacker.me/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-08-01T08:38:26-07:00</updated>
+  <updated>2013-08-08T13:03:49-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -21,6 +21,9 @@
     <content type="html"><![CDATA[<p>The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on <a href="http://github.com">GitHub</a>, which has improved a lot in the last few years to streamline the process.  With <a href="http://mac.github.com">GitHub for Mac</a>, it&rsquo;s easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into <em>your</em> Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.</p>
 
 <p>It doesn&rsquo;t have to be this way.</p>
+
+<!-- more -->
+
 
 <h1>CocoaPods</h1>
 
@@ -56,17 +59,17 @@
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
 </span><span class='line'>pod &lsquo;LastFm&rsquo;
 </span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>If you want to specify the version for a pod, simply append the version number like so:</p>
+<p>Note that the platform is case sensitive.  If you want to specify the version for a pod, simply append the version number like so:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
 </span><span class='line'>pod &lsquo;LastFm&rsquo;
 </span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;1.2.6&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
@@ -76,7 +79,7 @@
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
 </span><span class='line'>pod &lsquo;LastFm&rsquo;
 </span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;~> 1.2&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 

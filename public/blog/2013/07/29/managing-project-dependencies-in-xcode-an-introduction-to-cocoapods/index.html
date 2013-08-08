@@ -110,6 +110,9 @@
 
 <p>It doesn&rsquo;t have to be this way.</p>
 
+<!-- more -->
+
+
 <h1>CocoaPods</h1>
 
 <p><a href="http://cocoapods.org">CocoaPods</a> is the best way to manage library dependencies with Xcode.  It&rsquo;s still in the alpha phase, but it&rsquo;s continually being improved.  With CocoaPods, you can easily manage your project dependencies, even specifying the specific version number for each.  This is all tracked in a plaintext file, so you can keep this in your source repository and your whole team will automatically be in sync.  As an added bonus, you won&rsquo;t have to keep the projects in your source repository, so you can keep your repository&rsquo;s footprint small.</p>
@@ -146,18 +149,18 @@
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
 </span><span class='line'>pod 'LastFm'
 </span><span class='line'>pod 'TestFlightSDK'</span></code></pre></td></tr></table></div></figure>
 
 
-<p>If you want to specify the version for a pod, simply append the version number like so:</p>
+<p>Note that the platform is case sensitive.  If you want to specify the version for a pod, simply append the version number like so:</p>
 
 <figure class='code'><figcaption><span>Podfile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
 </span><span class='line'>pod 'LastFm'
 </span><span class='line'>pod 'TestFlightSDK', '1.2.6'</span></code></pre></td></tr></table></div></figure>
 
@@ -168,7 +171,7 @@
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :iOS
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
 </span><span class='line'>pod 'LastFm'
 </span><span class='line'>pod 'TestFlightSDK', '~> 1.2'</span></code></pre></td></tr></table></div></figure>
 
