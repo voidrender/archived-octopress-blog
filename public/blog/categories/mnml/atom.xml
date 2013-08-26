@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mnml | Isaac Overacker]]></title>
   <link href="http://overacker.me/blog/categories/mnml/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-08-26T09:33:42-07:00</updated>
+  <updated>2013-08-26T09:38:00-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Embedding Video With the Mnml Theme]]></title>
+    <link href="http://overacker.me/blog/2013/08/24/embedding-video-with-mnml/"/>
+    <updated>2013-08-24T17:31:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/08/24/embedding-video-with-mnml</id>
+    <content type="html"><![CDATA[<p>I released a small update to the <a href="https://github.com/ioveracker/mnml">mnml Octopress theme</a> recently to resolve an issue experienced by one of the users of mnml.  <a href="http://www.cnordin.me">Cole Nordin</a> opened <a href="https://github.com/ioveracker/mnml/issues/7">an issue</a> on GitHub which captures a common issue when embedding videos in posts wherein the video will not be resized with the window and therefore does not fit within the bounds of the screen on certain mobile devices.</p>
+
+<p>To address this, I added CSS from the <a href="https://github.com/optikfluffel/octopress-responsive-video-embed">octopress-responsive-video-embed</a> plugin to the theme.  (Unfortunately, I couldn&rsquo;t find a way to embed the plugin in the theme, so if you know of a way to do that please post in the comments below.)  When you need to embed a video, you can do it one of two ways.</p>
+
+<h1>Use the embed-video-container div</h1>
+
+<p>You can take advantage of the CSS directly if you don&rsquo;t want to mess with plugins.  Simpily wrap your embed code in the embed-video-container div like this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;div class="embed-video-container">
+</span><span class='line'>    &lt;iframe width="1600" height="1200" src="http://overacker.me//www.youtube.com/embed/_QP5X6fcukM" frameborder="0" allowfullscreen>&lt;/iframe>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Or, if you&rsquo;d like a markdown-friendly approach&hellip;</p>
+
+<h1>Install the octopress-responsive-video-embed plugin</h1>
+
+<p>Copy youtube.rb from the <a href="https://github.com/optikfluffel/octopress-responsive-video-embed">octopress-responsive-video-embed plugin</a> to your /plugins directory.  When you want to embed a youtube video, use the following markdown:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% youtube _QP5X6fcukM %}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Replace the video id with the video id you&rsquo;d like to post, of course.  (Make sure not to confuse this with the <a href="http://octopress.org/docs/plugins/video-tag/">video</a> plugin included with Octopress, which is used to embed mp4 files.)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress Themes: Opening Links in a New Window]]></title>

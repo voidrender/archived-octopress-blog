@@ -3,7 +3,7 @@ layout: post
 title: "Embedding Video With the Mnml Theme"
 date: 2013-08-24 17:31
 comments: true
-categories: octopress, meta, mnml
+categories: octopress meta mnml
 ---
 I released a small update to the [mnml Octopress theme](https://github.com/ioveracker/mnml) recently to resolve an issue experienced by one of the users of mnml.  [Cole Nordin](http://www.cnordin.me) opened [an issue](https://github.com/ioveracker/mnml/issues/7) on GitHub which captures a common issue when embedding videos in posts wherein the video will not be resized with the window and therefore does not fit within the bounds of the screen on certain mobile devices.
 

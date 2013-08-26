@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: octopress, | Isaac Overacker]]></title>
+  <title><![CDATA[Category: octopress | Isaac Overacker]]></title>
   <link href="http://overacker.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-08-26T09:33:42-07:00</updated>
+  <updated>2013-08-26T09:38:00-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -52,6 +52,38 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>{% youtube _QP5X6fcukM %}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Replace the video id with the video id you&rsquo;d like to post, of course.  (Make sure not to confuse this with the <a href="http://octopress.org/docs/plugins/video-tag/">video</a> plugin included with Octopress, which is used to embed mp4 files.)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Themes: Opening Links in a New Window]]></title>
+    <link href="http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
+    <updated>2013-07-11T14:00:00-07:00</updated>
+    <id>http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
+    <content type="html"><![CDATA[<p>I just rolled out a change to the <a href="https://github.com/ioveracker/mnml">mnml</a> theme to cause links to be opened in a new window.  If you&rsquo;re looking to do the same thing for your <a href="http://octopress.org">Octopress</a> theme, it requires a simple change to the <code>/source/javascripts/octopress.js</code> file.  Open that file and add the following to the <a href="http://learn.jquery.com/using-jquery-core/document-ready/">$(document).ready()</a> function:</p>
+
+<p>``` javascript
+$(document).ready(function(){</p>
+
+<pre><code>// You probably already have some code here.
+// Just add this to the end of the function.
+$('a').each(function() {
+    var a = new RegExp('/' + window.location.host + '/');
+    if(!a.test(this.href)) {
+        $(this).click(function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            window.open(this.href, '_blank');
+        });
+    }
+});
+</code></pre>
+
+<p>});
+```
+You could also do this in any web app that uses <a href="http://jquery.com">jQuery</a>, of course.</p>
+
+<p>(Hat-tip to <a href="http://www.adrikodde.nl/blog/2012/octopress-links-new-window/">Adri Kodde</a> for posting a snippet about this.)</p>
 ]]></content>
   </entry>
   
