@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "mnml+octopress responsive video embed plugins"
+title: "Embedding Video With the Mnml Theme"
 date: 2013-08-24 17:31
 comments: true
 categories: octopress, meta

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress, | Isaac Overacker]]></title>
   <link href="http://overacker.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-08-26T09:28:43-07:00</updated>
+  <updated>2013-08-26T09:33:42-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[mnml+octopress responsive video embed plugins]]></title>
-    <link href="http://overacker.me/blog/2013/08/24/mnml-plus-octopress-responsive-video-embed-plugins/"/>
+    <title type="html"><![CDATA[Embedding Video With the Mnml Theme]]></title>
+    <link href="http://overacker.me/blog/2013/08/24/embedding-video-with-mnml/"/>
     <updated>2013-08-24T17:31:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/08/24/mnml-plus-octopress-responsive-video-embed-plugins</id>
+    <id>http://overacker.me/blog/2013/08/24/embedding-video-with-mnml</id>
     <content type="html"><![CDATA[<p>I released a small update to the <a href="https://github.com/ioveracker/mnml">mnml Octopress theme</a> recently to resolve an issue experienced by one of the users of mnml.  <a href="http://www.cnordin.me">Cole Nordin</a> opened <a href="https://github.com/ioveracker/mnml/issues/7">an issue</a> on GitHub which captures a common issue when embedding videos in posts wherein the video will not be resized with the window and therefore does not fit within the bounds of the screen on certain mobile devices.</p>
 
 <p>To address this, I added CSS from the <a href="https://github.com/optikfluffel/octopress-responsive-video-embed">octopress-responsive-video-embed</a> plugin to the theme.  (Unfortunately, I couldn&rsquo;t find a way to embed the plugin in the theme, so if you know of a way to do that please post in the comments below.)  When you need to embed a video, you can do it one of two ways.</p>
