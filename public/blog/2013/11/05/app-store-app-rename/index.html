@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: ios - Isaac Overacker</title>
+  <title>Renaming An App on the App Store - Isaac Overacker</title>
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="Category: ios">
+  <meta name="description" content="Renaming an app on the iOS app store is a relatively simple thing to do. The biggest point of confusion is that you cannot rename your app unless it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://overacker.meblog/categories/ios">
+  <link rel="canonical" href="http://overacker.me/blog/2013/11/05/app-store-app-rename">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Isaac Overacker" type="application/atom+xml">
@@ -77,31 +77,109 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Ios</h1>
+  
+    
+      <h1 class="entry-title">Renaming an App on the App Store</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-05T17:38:00-08:00" pubdate data-updated="true">November 05, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Renaming an app on the iOS app store is a relatively simple thing to do.  The biggest point of confusion is that you cannot rename your app unless it is in an <em>editable state</em>.  You&rsquo;re probably going to want to change the display name for your app, so the easiest way to put your app in an editable state is to upload a new binary.</p>
 
-  
-  <h2>2013</h2>
+<h1>Bundle Identifier</h1>
 
-<article>
-  
-<h1><a href="/blog/2013/11/05/app-store-app-rename/">Renaming An App on the App Store</a></h1>
-<time datetime="2013-11-05T17:38:00-08:00" pubdate><span class='month'>November</span> <span class='day'>05</span> <span class='year'>2013</span></time>
+<p>If you want to rename your Xcode project to reflect the new app name, you won&rsquo;t want your bundle identifier to change along with the project name since this is the unique identifier for your app on the device.  By default, the bundle identifier includes <code>${PRODUCT_NAME}</code> or a variant thereof, e.g. <code>${PRODUCT_NAME:rfc1034identifier}</code>.  You won&rsquo;t want the Bundle Identifier to change when you rename your project, so the first thing you&rsquo;ll want to do is copy your Bundle Identifier from iTunes Connect and paste that in the Bundle Identifier field in the info.plist file for your app.</p>
 
-</article>
+<h1>Rename Project</h1>
 
+<p>The fastest (and most thorough) way to rename your app is to simply rename the project in Xcode.  Slowly double-click on the project file in Xcode so that the name becomes editable and change the name.  After pressing enter, a dialog will pop up asking if you&rsquo;d like to rename project content items.  You probably want to keep all of these in sync, so choose Rename.</p>
+
+<h1>Upload Binary</h1>
+
+<p>Login to iTunes Connect and create a new version of your app.  When you edit the metadata for the new version of your app, you can now edit the name of the app.  Enter the new name for your app, create your new binary, and upload.  If you make it through the review process, your app will be ready to launch under a new name!  As long as you don&rsquo;t change the Bundle Identifier, existing users will receive the update.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Isaac Overacker</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-05T17:38:00-08:00" pubdate data-updated="true">November 05, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/appstore/'>appstore</a>, <a class='category' href='/blog/categories/ios/'>ios</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://overacker.me/blog/2013/11/05/app-store-app-rename/" data-via="isaacoveracker" data-counturl="http://overacker.me/blog/2013/11/05/app-store-app-rename/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/24/embedding-video-with-mnml/" title="Previous Post: Embedding Video With the Mnml Theme">&laquo; Embedding Video With the Mnml Theme</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -130,7 +208,10 @@
       var disqus_shortname = 'isaacoveracker';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://overacker.me/blog/2013/11/05/app-store-app-rename/';
+        var disqus_url = 'http://overacker.me/blog/2013/11/05/app-store-app-rename/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

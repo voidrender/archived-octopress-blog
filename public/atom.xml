@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2013-08-26T09:38:00-07:00</updated>
+  <updated>2013-11-05T20:29:08-08:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+    <title type="html"><![CDATA[Renaming An App on the App Store]]></title>
+    <link href="http://overacker.me/blog/2013/11/05/app-store-app-rename/"/>
+    
+    <updated>2013-11-05T17:38:00-08:00</updated>
+    <id>http://overacker.me/blog/2013/11/05/app-store-app-rename</id>
+    
+    <content type="html"><![CDATA[<p>Renaming an app on the iOS app store is a relatively simple thing to do.  The biggest point of confusion is that you cannot rename your app unless it is in an <em>editable state</em>.  You&rsquo;re probably going to want to change the display name for your app, so the easiest way to put your app in an editable state is to upload a new binary.</p>
+
+<h1>Bundle Identifier</h1>
+
+<p>If you want to rename your Xcode project to reflect the new app name, you won&rsquo;t want your bundle identifier to change along with the project name since this is the unique identifier for your app on the device.  By default, the bundle identifier includes <code>${PRODUCT_NAME}</code> or a variant thereof, e.g. <code>${PRODUCT_NAME:rfc1034identifier}</code>.  You won&rsquo;t want the Bundle Identifier to change when you rename your project, so the first thing you&rsquo;ll want to do is copy your Bundle Identifier from iTunes Connect and paste that in the Bundle Identifier field in the info.plist file for your app.</p>
+
+<h1>Rename Project</h1>
+
+<p>The fastest (and most thorough) way to rename your app is to simply rename the project in Xcode.  Slowly double-click on the project file in Xcode so that the name becomes editable and change the name.  After pressing enter, a dialog will pop up asking if you&rsquo;d like to rename project content items.  You probably want to keep all of these in sync, so choose Rename.</p>
+
+<h1>Upload Binary</h1>
+
+<p>Login to iTunes Connect and create a new version of your app.  When you edit the metadata for the new version of your app, you can now edit the name of the app.  Enter the new name for your app, create your new binary, and upload.  If you make it through the review process, your app will be ready to launch under a new name!  As long as you don&rsquo;t change the Bundle Identifier, existing users will receive the update.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
