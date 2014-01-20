@@ -1,0 +1,11 @@
+---
+layout: post
+title: "How to create a simple API with Rails::API"
+date: 2014-01-08 23:53
+comments: true
+categories: rails, api, rails-api, backend
+---
+As a beginner Ruby/Rails developer, I have found the existing tutorials for Rails::API assume the reader has extensive experience with Rails.  I decided to expand upon the Todo API from Railscast to create a simple, robust, versioned API for tracking todo list items.
+
+#What is Rails::API?
+Rails::API is a 
