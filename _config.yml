@@ -75,7 +75,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user: isaacoveracker
+twitter_user: ioveracker
 twitter_tweet_button: true
 
 # Google +1
@@ -96,8 +96,8 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name: isaacoveracker
-disqus_show_comment_count: false
+disqus_short_name: ioveracker
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id: UA-42275862-1
