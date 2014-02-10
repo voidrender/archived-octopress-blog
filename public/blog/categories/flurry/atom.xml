@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: flurry | Isaac Overacker]]></title>
+  <link href="http://overacker.me/blog/categories/flurry/atom.xml" rel="self"/>
+  <link href="http://overacker.me/"/>
+  <updated>2014-02-09T23:22:39-08:00</updated>
+  <id>http://overacker.me/</id>
+  <author>
+    <name><![CDATA[Isaac Overacker]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Death of FlightPath and the Future of iOS Usage Statistics]]></title>
+    <link href="http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/"/>
+    <updated>2014-02-09T15:11:00-08:00</updated>
+    <id>http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics</id>
+    <content type="html"><![CDATA[<p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
+
+<p>As a replacement, I have started working with <a href="http://www.flurry.com">Flurry</a>, which provides a great deal of usage statistics, including an event infrastructure similar to TestFlight&rsquo;s checkpoint system.</p>
+
+<p>Make sure to sign up for a free account and copy your application key.  Let&rsquo;s get started!</p>
+
+<!-- more -->
+
+
+<h1>Setting Up Flurry</h1>
+
+<p>The Flurry SDK is available as a CocoaPod, so installing is a snap if you&rsquo;re using <a href="http://www.cocoapods.org">CocoaPods</a>.  (If you&rsquo;re not, you really should be.  Check out <a href="../../../../2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/">this simple guide</a> I wrote to get started.)</p>
+
+<p>Update your Podfile to include FlurrySDK:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pod &ldquo;FlurrySDK&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>and run <code>pod install</code>.</p>
+
+<p>Next, update your app delegate to start a Flurry session when the app finishes launching.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>AppDelegate.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Flurry</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">)</span><span class="n">launchOptions</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'> <span class="c1">// Optionally enable crash reporting.</span>
+</span><span class='line'> <span class="c1">// Note that you can&amp;rsquo;t have more than one crash reporting tool in your app.</span>
+</span><span class='line'> <span class="p">[</span><span class="n">Flurry</span> <span class="nl">setCrashReportingEnabled:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class='line'> <span class="c1">// Start sending data to Flurry.</span>
+</span><span class='line'> <span class="p">[</span><span class="n">Flurry</span> <span class="nl">startSession:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">YOUR_KEY_HERE</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;];</span>
+</span><span class='line'> <span class="c1">// &amp;hellip;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></li>
+</ul>
+
+
+<h1>Tracking Usage with Events</h1>
+
+<p>The event system provided by Flurry is similar to TestFlight&rsquo;s checkpoints, but includes a few unique and really nice features.  In TestFlight, events are limited to just a name, but with Flurry you can also associate a dictionary of parameters associated with the event, or cause the event to be timed.</p>
+
+<p>The syntax for logging an event is similar to logging a checkpoint in TestFlight.</p>
+
+<h3>Simple Event Logging</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">SomeEventName</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Event Logging With Parameters</h3>
+
+<p>If you&rsquo;d like to associate some data with the event, there is another static method available.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">eventParameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;};</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">SomeEventName</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="nl">withParameters:</span><span class="n">eventParameters</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Timed Events</h3>
+
+<p>You can time an event and have the duration be reported by Flurry&rsquo;s events dashboard.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">SomeEventName</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="nl">timed:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class='line'><span class="c1">// &amp;hellip;</span>
+</span><span class='line'><span class="c1">// End the timed event, and optionally add or update parameters.</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">endTimedEvent:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">SomeEventName</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="nl">withParameters:</span><span class="nb">nil</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Timed Events with Parameters</h3>
+
+<p>Lastly, you can combine all three.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">eventParameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;};</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">SomeEventName</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="nl">withParameters:</span><span class="n">eventParameters</span> <span class="nl">timed:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class='line'><span class="c1">// &amp;hellip;</span>
+</span><span class='line'><span class="c1">// End the timed event, and optionally add or update parameters.</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">endTimedEvent:</span><span class="err">@</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">SomeEventName</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="nl">withParameters:</span><span class="nb">nil</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><em>Note that it can take a few hours for events to show up after your first session, and that unlike TestFlight, Flurry events are synchronized when the app is paused or terminated.</em></p>
+
+<h1>Additional Features</h1>
+
+<p>Flurry passively tracks a lot of other information about your app, too.  Some of the neat metrics you get for free are:</p>
+
+<ul>
+<li>Sessions</li>
+<li>Active Users</li>
+<li>New Users</li>
+<li>Session Length</li>
+<li>Frequency of Use</li>
+<li>Benchmarks</li>
+<li>User Retention</li>
+<li>Version Adoption</li>
+<li>and many more</li>
+</ul>
+
+
+<p>I plan to continue using TestFlight and Flurry side-by-side for a while, but may end up migrating completely to Flurry for events.  It certainly has more interesting and useful features than TestFlight&rsquo;s simple checkpoint logging.  If I end up using the two in parallel, I&rsquo;ll do a follow-up post on how to make that easier.</p>
+]]></content>
+  </entry>
+  
+</feed>

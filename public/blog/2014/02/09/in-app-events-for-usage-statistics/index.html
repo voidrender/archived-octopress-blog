@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>The Death of FlightPath and the Future of iOS Usage Statistics - Isaac Overacker</title>
+  <meta name="author" content="Isaac Overacker">
+
+  
+  <meta name="description" content="As a longtime user of TestFlight for both test build distribution and usage analytics, I was extremely disappointed to find that they have cancelled &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Isaac Overacker" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-42275862-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+	<div class="header-title"><a href="/">Isaac Overacker</a></div>
+
+
+	<br><div class="header-subtitle">maker of things</div>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:overacker.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+  
+    
+      <h1 class="entry-title">The Death of FlightPath and the Future of iOS Usage Statistics</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-09T15:11:00-08:00" pubdate data-updated="true">February 09, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
+
+<p>As a replacement, I have started working with <a href="http://www.flurry.com">Flurry</a>, which provides a great deal of usage statistics, including an event infrastructure similar to TestFlight&rsquo;s checkpoint system.</p>
+
+<p>Make sure to sign up for a free account and copy your application key.  Let&rsquo;s get started!</p>
+
+<!-- more -->
+
+
+<h1>Setting Up Flurry</h1>
+
+<p>The Flurry SDK is available as a CocoaPod, so installing is a snap if you&rsquo;re using <a href="http://www.cocoapods.org">CocoaPods</a>.  (If you&rsquo;re not, you really should be.  Check out <a href="../../../../2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/">this simple guide</a> I wrote to get started.)</p>
+
+<p>Update your Podfile to include FlurrySDK:</p>
+
+<figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pod "FlurrySDK"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and run <code>pod install</code>.</p>
+
+<p>Next, update your app delegate to start a Flurry session when the app finishes launching.</p>
+
+<figure class='code'><figcaption><span>AppDelegate.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#include &lt;Flurry.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>   <span class="c1">// Optionally enable crash reporting.</span>
+</span><span class='line'>   <span class="c1">// Note that you can&#39;t have more than one crash reporting tool in your app.</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">Flurry</span> <span class="nl">setCrashReportingEnabled:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class='line'>   <span class="c1">// Start sending data to Flurry.</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">Flurry</span> <span class="nl">startSession:</span><span class="s">@&quot;YOUR_KEY_HERE&quot;</span><span class="p">];</span>
+</span><span class='line'>   <span class="c1">// ...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Tracking Usage with Events</h1>
+
+<p>The event system provided by Flurry is similar to TestFlight&rsquo;s checkpoints, but includes a few unique and really nice features.  In TestFlight, events are limited to just a name, but with Flurry you can also associate a dictionary of parameters associated with the event, or cause the event to be timed.</p>
+
+<p>The syntax for logging an event is similar to logging a checkpoint in TestFlight.</p>
+
+<h3>Simple Event Logging</h3>
+
+<figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="s">@&quot;SomeEventName&quot;</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Event Logging With Parameters</h3>
+
+<p>If you&rsquo;d like to associate some data with the event, there is another static method available.</p>
+
+<figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">eventParameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{...};</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="s">@&quot;SomeEventName&quot;</span> <span class="nl">withParameters:</span><span class="n">eventParameters</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Timed Events</h3>
+
+<p>You can time an event and have the duration be reported by Flurry&rsquo;s events dashboard.</p>
+
+<figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="s">@&quot;SomeEventName&quot;</span> <span class="nl">timed:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="c1">// End the timed event, and optionally add or update parameters.</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">endTimedEvent:</span><span class="s">@&quot;SomeEventName&quot;</span> <span class="nl">withParameters:</span><span class="nb">nil</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Timed Events with Parameters</h3>
+
+<p>Lastly, you can combine all three.</p>
+
+<figure class='code'><figcaption><span>SomeFile.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">eventParameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{...};</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">logEvent:</span><span class="s">@&quot;SomeEventName&quot;</span> <span class="nl">withParameters:</span><span class="n">eventParameters</span> <span class="nl">timed:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="c1">// End the timed event, and optionally add or update parameters.</span>
+</span><span class='line'><span class="p">[</span><span class="n">Flurry</span> <span class="nl">endTimedEvent:</span><span class="s">@&quot;SomeEventName&quot;</span> <span class="nl">withParameters:</span><span class="nb">nil</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Note that it can take a few hours for events to show up after your first session, and that unlike TestFlight, Flurry events are synchronized when the app is paused or terminated.</em></p>
+
+<h1>Additional Features</h1>
+
+<p>Flurry passively tracks a lot of other information about your app, too.  Some of the neat metrics you get for free are:</p>
+
+<ul>
+<li>Sessions</li>
+<li>Active Users</li>
+<li>New Users</li>
+<li>Session Length</li>
+<li>Frequency of Use</li>
+<li>Benchmarks</li>
+<li>User Retention</li>
+<li>Version Adoption</li>
+<li>and many more</li>
+</ul>
+
+
+<p>I plan to continue using TestFlight and Flurry side-by-side for a while, but may end up migrating completely to Flurry for events.  It certainly has more interesting and useful features than TestFlight&rsquo;s simple checkpoint logging.  If I end up using the two in parallel, I&rsquo;ll do a follow-up post on how to make that easier.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Isaac Overacker</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-09T15:11:00-08:00" pubdate data-updated="true">February 09, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/data-collection/'>data-collection</a>, <a class='category' href='/blog/categories/flightpath/'>flightpath</a>, <a class='category' href='/blog/categories/flurry/'>flurry</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>, <a class='category' href='/blog/categories/testflight/'>testflight</a>, <a class='category' href='/blog/categories/usage-statistics/'>usage-statistics</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/" data-via="isaacoveracker" data-counturl="http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/05/app-store-app-rename/" title="Previous Post: Renaming An App on the App Store">&laquo; Renaming An App on the App Store</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  
+	  Hosted by <a href="http://heroku.com">Heroku</a>. 
+	  
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'isaacoveracker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/';
+        var disqus_url = 'http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
