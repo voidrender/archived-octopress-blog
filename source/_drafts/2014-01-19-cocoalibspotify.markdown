@@ -3,7 +3,7 @@ layout: post
 title: "CocoaLibSpotify Basics"
 date: 2014-01-19 17:42
 comments: true
-categories: iOS, spotify
+categories: iOS spotify
 ---
 I recently started working with [CocoaLibSpotify](http://github.com/spotify/cocoalibspotify) and found it a tiny bit challenging to navigate at first.  The documentation is fairly comprehensive, but the sample projects included in the repository only show examples of a few simple scenarios.  The rest of the tasks one may want to perform must be gleaned from reading the documentation.  This is fine, but I would have liked a slightly more comprehensive guide to getting started.  I am hoping to provide such a guide in this post.
 <!-- more -->
