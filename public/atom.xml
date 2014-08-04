@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://overacker.me/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
-  <updated>2014-02-11T10:07:43-08:00</updated>
+  <updated>2014-08-04T10:24:50-07:00</updated>
   <id>http://overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+    <title type="html"><![CDATA[Architecture Headaches with CocoaPods]]></title>
+    <link href="http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/"/>
+    
+    <updated>2014-08-03T18:22:00-07:00</updated>
+    <id>http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods</id>
+    
+    <content type="html"><![CDATA[<p>I recently inherited an iOS project from another developer.  This project was not using CocoaPods for dependency management, so naturally, I converted it to using CocoaPods as soon as I could.  When I first installed the pods, I received this warning in the console:</p>
+
+<figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[!] Found multiple values (`armv7`, `armv7s`) for the
+</span><span class='line'>architectures (`ARCHS`) build setting for the `Pods` 
+</span><span class='line'>target definition. Using the first.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It seemed harmless enough, and the project built without problems for the iPhone simulator.  I carried on for a few weeks working on new features, and then I tried to build a version of the app targeting the iOS devices.  Suddenly, I had linker errors.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"_OBJC_CLASS_$_FBSession", referenced from:
+</span><span class='line'>  objc-class-ref in MySourceFile.m
+</span><span class='line'>  ...
+</span><span class='line'>ld: symbol(s) not found for architecture armv7s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I looked around for solutions, but of course with linker errors it&rsquo;s can be very difficult to find answers for a particular issue.  Finally, after many hours of searching, reading, and highly scientific trial and error, I decided to look into the multiple architecture warning from CocoaPods, and that&rsquo;s where I found my issue.  In this particular case, the Pods-* targets in my Pods project were targeting armv7 (which is pretty obvious from the CocoaPods warning, but a few weeks had passed), whereas my main app target architectures included both armv7 and armv7s, hence the linker error above.</p>
+
+<p>The solution was to update the target architectures for the app to <code>$(ARCHS_STANDARD_32_BIT)</code> instead of manually specifying both <code>armv7</code> and <code>armv7s</code>.  Then, when running <code>pod install</code>, the <code>$(ARCHS_STANDARD_32_BIT)</code> is set for the Pods-* projects as well and everything is happy.</p>
+
+<p><em>Note: the reason armv7 and armv7s architectures had been specified for the app is that there is a dependency on a library that does not yet support 64-bit architectures.  It looks like <code>$(ARCHS_STANDARD_32_BIT)</code> is a much better way to handle that situation.</em></p>
+]]></content>
+    
+  </entry>
   
   <entry>
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: iOS, | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/ios/atom.xml" rel="self"/>
+  <title><![CDATA[Category: linker-errors | Isaac Overacker]]></title>
+  <link href="http://overacker.me/blog/categories/linker-errors/atom.xml" rel="self"/>
   <link href="http://overacker.me/"/>
   <updated>2014-08-04T10:24:50-07:00</updated>
   <id>http://overacker.me/</id>
