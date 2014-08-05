@@ -3,7 +3,7 @@ layout: post
 title: "Architecture Headaches with CocoaPods"
 date: 2014-08-03 18:22
 comments: true
-categories: cocoapods, iOS, xcode, linker-errors
+categories: cocoapods ios xcode linker-errors
 ---
 I recently inherited an iOS project from another developer.  This project was not using CocoaPods for dependency management, so naturally, I converted it to using CocoaPods as soon as I could.  When I first installed the pods, I received this warning in the console:
 

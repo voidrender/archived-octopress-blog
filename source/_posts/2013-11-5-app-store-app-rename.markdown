@@ -3,7 +3,7 @@ layout: post
 title: "Renaming An App on the App Store"
 date: 2013-11-5 17:38
 comments: true
-categories: ios appstore
+categories: ios appstore xcode
 ---
 Renaming an app on the iOS app store is a relatively simple thing to do.  The biggest point of confusion is that you cannot rename your app unless it is in an *editable state*.  You're probably going to want to change the display name for your app, so the easiest way to put your app in an editable state is to upload a new binary.
 
