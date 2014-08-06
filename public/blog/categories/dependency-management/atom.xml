@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: dependency-management | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/dependency-management/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/blog/categories/dependency-management/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Managing Project Dependencies in Xcode: An Introduction to CocoaPods]]></title>
-    <link href="http://overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
+    <link href="http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
     <updated>2013-07-29T00:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
+    <id>http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
     <content type="html"><![CDATA[<p>The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on <a href="http://github.com">GitHub</a>, which has improved a lot in the last few years to streamline the process.  With <a href="http://mac.github.com">GitHub for Mac</a>, it&rsquo;s easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into <em>your</em> Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.</p>
 
 <p>It doesn&rsquo;t have to be this way.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Isaac Overacker]]></title>
-  <link href="http://overacker.me/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -16,10 +16,10 @@
   <entry>
     
     <title type="html"><![CDATA[Architecture Headaches with CocoaPods]]></title>
-    <link href="http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/"/>
+    <link href="http://www.overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/"/>
     
     <updated>2014-08-03T18:22:00-07:00</updated>
-    <id>http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods</id>
+    <id>http://www.overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods</id>
     
     <content type="html"><![CDATA[<p>I recently inherited an iOS project from another developer.  This project was not using CocoaPods for dependency management, so naturally, I converted it to using CocoaPods as soon as I could.  When I first installed the pods, I received this warning in the console:</p>
 
@@ -56,10 +56,10 @@
   <entry>
     
     <title type="html"><![CDATA[The Death of FlightPath and the Future of iOS Usage Statistics]]></title>
-    <link href="http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/"/>
+    <link href="http://www.overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/"/>
     
     <updated>2014-02-09T15:11:00-08:00</updated>
-    <id>http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics</id>
+    <id>http://www.overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics</id>
     
     <content type="html"><![CDATA[<p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
 
@@ -198,10 +198,10 @@
   <entry>
     
     <title type="html"><![CDATA[Renaming An App on the App Store]]></title>
-    <link href="http://overacker.me/blog/2013/11/05/app-store-app-rename/"/>
+    <link href="http://www.overacker.me/blog/2013/11/05/app-store-app-rename/"/>
     
     <updated>2013-11-05T17:38:00-08:00</updated>
-    <id>http://overacker.me/blog/2013/11/05/app-store-app-rename</id>
+    <id>http://www.overacker.me/blog/2013/11/05/app-store-app-rename</id>
     
     <content type="html"><![CDATA[<p>Renaming an app on the iOS app store is a relatively simple thing to do.  The biggest point of confusion is that you cannot rename your app unless it is in an <em>editable state</em>.  You&rsquo;re probably going to want to change the display name for your app, so the easiest way to put your app in an editable state is to upload a new binary.</p>
 
@@ -223,10 +223,10 @@
   <entry>
     
     <title type="html"><![CDATA[Embedding Video With the Mnml Theme]]></title>
-    <link href="http://overacker.me/blog/2013/08/24/embedding-video-with-mnml/"/>
+    <link href="http://www.overacker.me/blog/2013/08/24/embedding-video-with-mnml/"/>
     
     <updated>2013-08-24T17:31:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/08/24/embedding-video-with-mnml</id>
+    <id>http://www.overacker.me/blog/2013/08/24/embedding-video-with-mnml</id>
     
     <content type="html"><![CDATA[<p>I released a small update to the <a href="https://github.com/ioveracker/mnml">mnml Octopress theme</a> recently to resolve an issue experienced by one of the users of mnml.  <a href="http://www.cnordin.me">Cole Nordin</a> opened <a href="https://github.com/ioveracker/mnml/issues/7">an issue</a> on GitHub which captures a common issue when embedding videos in posts wherein the video will not be resized with the window and therefore does not fit within the bounds of the screen on certain mobile devices.</p>
 
@@ -240,7 +240,7 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="embed-video-container">
-</span><span class='line'>    &lt;iframe width="1600" height="1200" src="http://overacker.me//www.youtube.com/embed/_QP5X6fcukM" frameborder="0" allowfullscreen>&lt;/iframe>
+</span><span class='line'>    &lt;iframe width="1600" height="1200" src="http://www.overacker.me//www.youtube.com/embed/_QP5X6fcukM" frameborder="0" allowfullscreen>&lt;/iframe>
 </span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
 
 
@@ -262,10 +262,10 @@
   <entry>
     
     <title type="html"><![CDATA[Managing Project Dependencies in Xcode: An Introduction to CocoaPods]]></title>
-    <link href="http://overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
+    <link href="http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
     
     <updated>2013-07-29T00:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
+    <id>http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
     
     <content type="html"><![CDATA[<p>The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on <a href="http://github.com">GitHub</a>, which has improved a lot in the last few years to streamline the process.  With <a href="http://mac.github.com">GitHub for Mac</a>, it&rsquo;s easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into <em>your</em> Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.</p>
 
@@ -378,10 +378,10 @@
   <entry>
     
     <title type="html"><![CDATA[Octopress Themes: Opening Links in a New Window]]></title>
-    <link href="http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
+    <link href="http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
     
     <updated>2013-07-11T14:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
+    <id>http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
     
     <content type="html"><![CDATA[<p>I just rolled out a change to the <a href="https://github.com/ioveracker/mnml">mnml</a> theme to cause links to be opened in a new window.  If you&rsquo;re looking to do the same thing for your <a href="http://octopress.org">Octopress</a> theme, it requires a simple change to the <code>/source/javascripts/octopress.js</code> file.  Open that file and add the following to the <a href="http://learn.jquery.com/using-jquery-core/document-ready/">$(document).ready()</a> function:</p>
 
@@ -426,10 +426,10 @@
   <entry>
     
     <title type="html"><![CDATA[Managing Ruby Environments on OS X: Getting Started with rbenv]]></title>
-    <link href="http://overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
+    <link href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
     
     <updated>2013-07-10T00:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
+    <id>http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
     
     <content type="html"><![CDATA[<p>If you&rsquo;ve done any development on OS X, chances are you&rsquo;ve run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.</p>
 

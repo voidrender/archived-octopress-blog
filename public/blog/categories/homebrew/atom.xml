@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: homebrew | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/homebrew/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/blog/categories/homebrew/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Managing Ruby Environments on OS X: Getting Started with rbenv]]></title>
-    <link href="http://overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
+    <link href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
     <updated>2013-07-10T00:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
+    <id>http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
     <content type="html"><![CDATA[<p>If you&rsquo;ve done any development on OS X, chances are you&rsquo;ve run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.</p>
 
 <h1>Installation</h1>

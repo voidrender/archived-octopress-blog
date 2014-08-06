@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: linker-errors | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/linker-errors/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/blog/categories/linker-errors/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Architecture Headaches with CocoaPods]]></title>
-    <link href="http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/"/>
+    <link href="http://www.overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/"/>
     <updated>2014-08-03T18:22:00-07:00</updated>
-    <id>http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods</id>
+    <id>http://www.overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods</id>
     <content type="html"><![CDATA[<p>I recently inherited an iOS project from another developer.  This project was not using CocoaPods for dependency management, so naturally, I converted it to using CocoaPods as soon as I could.  When I first installed the pods, I received this warning in the console:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>

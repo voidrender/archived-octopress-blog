@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: octopress | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Embedding Video With the Mnml Theme]]></title>
-    <link href="http://overacker.me/blog/2013/08/24/embedding-video-with-mnml/"/>
+    <link href="http://www.overacker.me/blog/2013/08/24/embedding-video-with-mnml/"/>
     <updated>2013-08-24T17:31:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/08/24/embedding-video-with-mnml</id>
+    <id>http://www.overacker.me/blog/2013/08/24/embedding-video-with-mnml</id>
     <content type="html"><![CDATA[<p>I released a small update to the <a href="https://github.com/ioveracker/mnml">mnml Octopress theme</a> recently to resolve an issue experienced by one of the users of mnml.  <a href="http://www.cnordin.me">Cole Nordin</a> opened <a href="https://github.com/ioveracker/mnml/issues/7">an issue</a> on GitHub which captures a common issue when embedding videos in posts wherein the video will not be resized with the window and therefore does not fit within the bounds of the screen on certain mobile devices.</p>
 
 <p>To address this, I added CSS from the <a href="https://github.com/optikfluffel/octopress-responsive-video-embed">octopress-responsive-video-embed</a> plugin to the theme.  (Unfortunately, I couldn&rsquo;t find a way to embed the plugin in the theme, so if you know of a way to do that please post in the comments below.)  When you need to embed a video, you can do it one of two ways.</p>
@@ -37,7 +37,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;div class="embed-video-container">
-</span><span class='line'>    &lt;iframe width="1600" height="1200" src="http://overacker.me//www.youtube.com/embed/_QP5X6fcukM" frameborder="0" allowfullscreen>&lt;/iframe>
+</span><span class='line'>    &lt;iframe width="1600" height="1200" src="http://www.overacker.me//www.youtube.com/embed/_QP5X6fcukM" frameborder="0" allowfullscreen>&lt;/iframe>
 </span><span class='line'>&lt;/div>
 </span><span class='line'>
 </span><span class='line'>
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress Themes: Opening Links in a New Window]]></title>
-    <link href="http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
+    <link href="http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
     <updated>2013-07-11T14:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
+    <id>http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
     <content type="html"><![CDATA[<p>I just rolled out a change to the <a href="https://github.com/ioveracker/mnml">mnml</a> theme to cause links to be opened in a new window.  If you&rsquo;re looking to do the same thing for your <a href="http://octopress.org">Octopress</a> theme, it requires a simple change to the <code>/source/javascripts/octopress.js</code> file.  Open that file and add the following to the <a href="http://learn.jquery.com/using-jquery-core/document-ready/">$(document).ready()</a> function:</p>
 
 <p>``` javascript

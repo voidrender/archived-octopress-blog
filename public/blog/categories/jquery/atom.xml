@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jquery | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/jquery/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress Themes: Opening Links in a New Window]]></title>
-    <link href="http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
+    <link href="http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/"/>
     <updated>2013-07-11T14:00:00-07:00</updated>
-    <id>http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
+    <id>http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window</id>
     <content type="html"><![CDATA[<p>I just rolled out a change to the <a href="https://github.com/ioveracker/mnml">mnml</a> theme to cause links to be opened in a new window.  If you&rsquo;re looking to do the same thing for your <a href="http://octopress.org">Octopress</a> theme, it requires a simple change to the <code>/source/javascripts/octopress.js</code> file.  Open that file and add the following to the <a href="http://learn.jquery.com/using-jquery-core/document-ready/">$(document).ready()</a> function:</p>
 
 <p>``` javascript

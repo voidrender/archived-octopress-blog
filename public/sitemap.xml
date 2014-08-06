@@ -1,51 +1,51 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://overacker.me/blog/2013/07/10/getting-started-with-rbenv/</loc>
+        <loc>http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/</loc>
         <lastmod>2014-02-09T23:35:22-08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/
+            http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/
         </loc>
         <lastmod>2014-02-09T23:35:22-08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/
+            http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/
         </loc>
         <lastmod>2014-08-05T11:53:27-07:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/blog/2013/08/24/embedding-video-with-mnml/</loc>
+        <loc>http://www.overacker.me/blog/2013/08/24/embedding-video-with-mnml/</loc>
         <lastmod>2014-02-09T23:35:22-08:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/blog/2013/11/05/app-store-app-rename/</loc>
+        <loc>http://www.overacker.me/blog/2013/11/05/app-store-app-rename/</loc>
         <lastmod>2014-08-05T11:54:11-07:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/</loc>
+        <loc>http://www.overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/</loc>
         <lastmod>2014-08-05T11:54:26-07:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/</loc>
+        <loc>http://www.overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/</loc>
         <lastmod>2014-08-05T11:52:26-07:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/about/</loc>
+        <loc>http://www.overacker.me/about/</loc>
         <lastmod>2014-02-09T23:35:22-08:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/blog/archives/</loc>
+        <loc>http://www.overacker.me/blog/archives/</loc>
         <lastmod>2014-08-05T11:54:26-07:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/</loc>
+        <loc>http://www.overacker.me/</loc>
         <lastmod>2014-08-05T11:54:26-07:00</lastmod>
     </url>
     <url>
-        <loc>http://overacker.me/robots.txt</loc>
+        <loc>http://www.overacker.me/robots.txt</loc>
         <lastmod>2014-02-09T23:35:22-08:00</lastmod>
     </url>
 </urlset>

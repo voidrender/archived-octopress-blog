@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: data-collection | Isaac Overacker]]></title>
-  <link href="http://overacker.me/blog/categories/data-collection/atom.xml" rel="self"/>
-  <link href="http://overacker.me/"/>
-  <updated>2014-08-05T11:54:39-07:00</updated>
-  <id>http://overacker.me/</id>
+  <link href="http://www.overacker.me/blog/categories/data-collection/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2014-08-05T17:44:56-07:00</updated>
+  <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Death of FlightPath and the Future of iOS Usage Statistics]]></title>
-    <link href="http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/"/>
+    <link href="http://www.overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/"/>
     <updated>2014-02-09T15:11:00-08:00</updated>
-    <id>http://overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics</id>
+    <id>http://www.overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics</id>
     <content type="html"><![CDATA[<p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
 
 <p>As a replacement, I have started working with <a href="http://www.flurry.com">Flurry</a>, which provides a great deal of usage statistics, including an event infrastructure similar to TestFlight&rsquo;s checkpoint system.</p>
