@@ -33,16 +33,22 @@
         <lastmod>2014-08-21T15:16:03-07:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/
+        </loc>
+        <lastmod>2014-09-15T14:04:30-07:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.overacker.me/about/</loc>
         <lastmod>2014-08-21T15:16:51-07:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/archives/</loc>
-        <lastmod>2014-08-21T15:16:03-07:00</lastmod>
+        <lastmod>2014-09-15T14:04:30-07:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/</loc>
-        <lastmod>2014-08-21T15:16:03-07:00</lastmod>
+        <lastmod>2014-09-15T14:04:30-07:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/robots.txt</loc>

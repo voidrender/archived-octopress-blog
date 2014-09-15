@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: cocoapods - Isaac Overacker</title>
+  <title>Integrating Test Dependencies with CocoaPods - Isaac Overacker</title>
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="Category: cocoapods">
+  <meta name="description" content="Most Xcode projects should have some level of test coverage, and any time unit tests are involved it&rsquo;s nice to have a framework for generating &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.overacker.meblog/categories/cocoapods">
+  <link rel="canonical" href="http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Isaac Overacker" type="application/atom+xml">
@@ -77,52 +77,132 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Cocoapods</h1>
+  
+    
+      <h1 class="entry-title">Integrating Test Dependencies With CocoaPods</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-15T13:49:00-07:00" pubdate data-updated="true">September 15, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Most Xcode projects should have some level of test coverage, and any time unit tests are involved it&rsquo;s nice to have a framework for generating mock objects.  However, we don&rsquo;t want to bloat our production app package with these test frameworks, so it&rsquo;s nice to link these libraries only with the test target.  Configuring this properly can be tricky, and the CocoaPods documentation isn&rsquo;t very clear on exactly how to accomplish this in the podfile.</p>
 
-  
-  <h2>2014</h2>
+<p>The cleanest solution I&rsquo;ve found to this problem involves specifying the pods for each target individually and using a Ruby function to import the common pods.  Here is a sample podfile that accomplishes this:</p>
 
-<article>
-  
-<h1><a href="/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/">Integrating Test Dependencies with CocoaPods</a></h1>
-<time datetime="2014-09-15T13:49:00-07:00" pubdate><span class='month'>September</span> <span class='day'>15</span> <span class='year'>2014</span></time>
+<figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios, '7.0'
+</span><span class='line'>
+</span><span class='line'>def import_common_pods
+</span><span class='line'>   pod 'AFNetworking'
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>target 'MyAppTarget' do
+</span><span class='line'>   import_common_pods
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>target 'MyAppTestTarget' do
+</span><span class='line'>   import_common_pods
+</span><span class='line'>   pod 'OCMock'
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
 
-</article>
 
-
-
-<article>
-  
-<h1><a href="/blog/2014/08/03/architecture-headaches-with-cocoapods/">Architecture Headaches with CocoaPods</a></h1>
-<time datetime="2014-08-03T18:22:00-07:00" pubdate><span class='month'>August</span> <span class='day'>03</span> <span class='year'>2014</span></time>
-
-</article>
-
-
-
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/">Managing Project Dependencies in Xcode: An Introduction to CocoaPods</a></h1>
-<time datetime="2013-07-29T00:00:00-07:00" pubdate><span class='month'>July</span> <span class='day'>29</span> <span class='year'>2013</span></time>
-
-</article>
-
+<p>Note that you may run into a few issues with this if you&rsquo;re  adding this to an existing project and the previous podfile did not explicitly specify the non-test target.  In that case, you may need to delete the old Pods.xcconfig and libPods.a files then regenerate your workspace with <code>pod install</code>.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Isaac Overacker</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-15T13:49:00-07:00" pubdate data-updated="true">September 15, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/automated-tests/'>automated-tests</a>, <a class='category' href='/blog/categories/cocoapods/'>cocoapods</a>, <a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/xcode/'>xcode</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/" data-via="ioveracker" data-counturl="http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/03/architecture-headaches-with-cocoapods/" title="Previous Post: Architecture Headaches with CocoaPods">&laquo; Architecture Headaches with CocoaPods</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -151,7 +231,10 @@
       var disqus_shortname = 'isaacoveracker';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/';
+        var disqus_url = 'http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

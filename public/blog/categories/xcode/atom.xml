@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xcode | Isaac Overacker]]></title>
   <link href="http://www.overacker.me/blog/categories/xcode/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
-  <updated>2014-08-21T15:16:51-07:00</updated>
+  <updated>2014-09-15T14:04:31-07:00</updated>
   <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Integrating Test Dependencies with CocoaPods]]></title>
+    <link href="http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/"/>
+    <updated>2014-09-15T13:49:00-07:00</updated>
+    <id>http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods</id>
+    <content type="html"><![CDATA[<p>Most Xcode projects should have some level of test coverage, and any time unit tests are involved it&rsquo;s nice to have a framework for generating mock objects.  However, we don&rsquo;t want to bloat our production app package with these test frameworks, so it&rsquo;s nice to link these libraries only with the test target.  Configuring this properly can be tricky, and the CocoaPods documentation isn&rsquo;t very clear on exactly how to accomplish this in the podfile.</p>
+
+<p>The cleanest solution I&rsquo;ve found to this problem involves specifying the pods for each target individually and using a Ruby function to import the common pods.  Here is a sample podfile that accomplishes this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>platform :ios, &lsquo;7.0&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>def import_common_pods
+</span><span class='line'>   pod &lsquo;AFNetworking&rsquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>target &lsquo;MyAppTarget&rsquo; do
+</span><span class='line'>   import_common_pods
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>target &lsquo;MyAppTestTarget&rsquo; do
+</span><span class='line'>   import_common_pods
+</span><span class='line'>   pod &lsquo;OCMock&rsquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Note that you may run into a few issues with this if you&rsquo;re  adding this to an existing project and the previous podfile did not explicitly specify the non-test target.  In that case, you may need to delete the old Pods.xcconfig and libPods.a files then regenerate your workspace with <code>pod install</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Architecture Headaches with CocoaPods]]></title>
