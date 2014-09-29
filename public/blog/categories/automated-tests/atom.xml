@@ -4,7 +4,7 @@
   <title><![CDATA[Category: automated-tests | Isaac Overacker]]></title>
   <link href="http://www.overacker.me/blog/categories/automated-tests/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
-  <updated>2014-09-15T14:04:31-07:00</updated>
+  <updated>2014-09-29T16:32:15-07:00</updated>
   <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -61,6 +61,34 @@
 </span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Note that you may run into a few issues with this if you&rsquo;re  adding this to an existing project and the previous podfile did not explicitly specify the non-test target.  In that case, you may need to delete the old Pods.xcconfig and libPods.a files then regenerate your workspace with <code>pod install</code>.</p>
+
+<h1>Update</h1>
+
+<p>As of CocoaPods 0.34, there&rsquo;s a cleaner solution built-in:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source &lsquo;&lt;a href="https://github.com/CocoaPods/Specs.git">https://github.com/CocoaPods/Specs.git&lt;/a>&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>platform :ios, &lsquo;7.0&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>pod &lsquo;AFNetworking&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>target &ldquo;MyAppTestTarget&rdquo;, :exclusive => true do
+</span><span class='line'>   pod &lsquo;OCMock&rsquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

@@ -29,3 +29,19 @@ end
 {% endcodeblock %}
 
 Note that you may run into a few issues with this if you're  adding this to an existing project and the previous podfile did not explicitly specify the non-test target.  In that case, you may need to delete the old Pods.xcconfig and libPods.a files then regenerate your workspace with `pod install`.
+
+#Update
+As of CocoaPods 0.34, there's a cleaner solution built-in:
+
+{% codeblock Podfile %}
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '7.0'
+
+pod 'AFNetworking'
+
+target "MyAppTestTarget", :exclusive => true do
+   pod 'OCMock'
+end 
+
+{% endcodeblock %}
