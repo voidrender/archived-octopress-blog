@@ -9,7 +9,7 @@
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="The open-source community for iOS is amazing. There are so many high-quality, incredibly useful open-source projects out there now that it would be &hellip;">
+  <meta name="description" content="I released a small update to the mnml Octopress theme recently to resolve an issue experienced by one of the users of mnml. Cole Nordin opened an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/24/embedding-video-with-mnml/">Embedding Video With the Mnml Theme</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-24T17:31:00-07:00" pubdate data-updated="true">August 24, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I released a small update to the <a href="https://github.com/ioveracker/mnml">mnml Octopress theme</a> recently to resolve an issue experienced by one of the users of mnml.  <a href="http://www.cnordin.me">Cole Nordin</a> opened <a href="https://github.com/ioveracker/mnml/issues/7">an issue</a> on GitHub which captures a common issue when embedding videos in posts wherein the video will not be resized with the window and therefore does not fit within the bounds of the screen on certain mobile devices.</p>
+
+<p>To address this, I added CSS from the <a href="https://github.com/optikfluffel/octopress-responsive-video-embed">octopress-responsive-video-embed</a> plugin to the theme.  (Unfortunately, I couldn&rsquo;t find a way to embed the plugin in the theme, so if you know of a way to do that please post in the comments below.)  When you need to embed a video, you can do it one of two ways.</p>
+
+<h1>Use the embed-video-container div</h1>
+
+<p>You can take advantage of the CSS directly if you don&rsquo;t want to mess with plugins.  Simpily wrap your embed code in the embed-video-container div like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="embed-video-container">
+</span><span class='line'>    &lt;iframe width="1600" height="1200" src="//www.youtube.com/embed/_QP5X6fcukM" frameborder="0" allowfullscreen>&lt;/iframe>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or, if you&rsquo;d like a markdown-friendly approach&hellip;</p>
+
+<h1>Install the octopress-responsive-video-embed plugin</h1>
+
+<p>Copy youtube.rb from the <a href="https://github.com/optikfluffel/octopress-responsive-video-embed">octopress-responsive-video-embed plugin</a> to your /plugins directory.  When you want to embed a youtube video, use the following markdown:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% youtube _QP5X6fcukM %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Replace the video id with the video id you&rsquo;d like to post, of course.  (Make sure not to confuse this with the <a href="http://octopress.org/docs/plugins/video-tag/">video</a> plugin included with Octopress, which is used to embed mp4 files.)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -317,7 +381,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
+  Copyright &copy; 2015 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
 	  
 	  Hosted by <a href="http://heroku.com">Heroku</a>. 

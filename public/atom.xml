@@ -4,7 +4,7 @@
   <title><![CDATA[Isaac Overacker]]></title>
   <link href="http://www.overacker.me/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
-  <updated>2014-11-20T20:12:05-08:00</updated>
+  <updated>2015-01-12T14:12:08-08:00</updated>
   <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+    <title type="html"><![CDATA[Image Caching with AFNetworking]]></title>
+    <link href="http://www.overacker.me/blog/2015/01/12/image-caching-with-afnetworking/"/>
+    
+    <updated>2015-01-12T13:09:00-08:00</updated>
+    <id>http://www.overacker.me/blog/2015/01/12/image-caching-with-afnetworking</id>
+    
+    <content type="html"><![CDATA[<p><a href="http://www.afnetworking.com">AFNetworking</a> is one of the most popular open-source networking frameworks for iOS.  You&rsquo;re probably already using it, but if you&rsquo;re not, you should consider it.  One of the lesser-known features of AFNetworking is the ability to easily load an image from a URL to be used in a <code>UIImageView</code>.</p>
+
+<!-- more -->
+
+
+<h1>Simple Image Caching</h1>
+
+<p>Start by importing the <code>UIImageView+AFNetworking</code> header and several useful methods will be added to the <code>UIImageView</code> class.</p>
+
+<p>For simple in-memory caching, you can use the <code>setImageWithURL:</code> and <code>setImageWithURL:placeholderImage:</code> methods and the image will be retrieved from the in-memory cache, if the image exists, otherwise it will be fetched from the URL and stored in the cache.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">imageURL</span><span class="p">]];</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Or, with a placeholder image displayed while the image is being downloaded:</span>
+</span><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">imageURL</span><span class="p">]</span>
+</span><span class='line'>          <span class="nl">placeholderImage:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;placeholder&quot;</span><span class="p">]];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Disk Caching</h1>
+
+<p>If you need to cache the image for longer than the user&rsquo;s session, you can use the <code>setImageWithURLRequest:placeholderImage:success:failure:</code> method.  Set the caching policy on your <code>NSURLRequest</code> to whatever you need and you&rsquo;re good to go!</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">imageRequest</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nl">requestWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">imageURL</span><span class="p">]</span>
+</span><span class='line'>                                              <span class="nl">cachePolicy:</span><span class="n">NSURLRequestReturnCacheDataElseLoad</span>
+</span><span class='line'>                                          <span class="nl">timeoutInterval:</span><span class="mi">60</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURLRequest:</span><span class="n">imageRequest</span>
+</span><span class='line'>                 <span class="nl">placeholderImage:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;placeholder&quot;</span><span class="p">]</span>
+</span><span class='line'>                          <span class="nl">success:</span><span class="nb">nil</span>
+</span><span class='line'>                          <span class="nl">failure:</span><span class="nb">nil</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that if you supply a success block, you will be responsible for setting the image within the success block.  If one is not provided, AFNetworking will set the image for you.</p>
+
+<h1>Alternative</h1>
+
+<p>If AFNetworking isn&rsquo;t your thing, I highly recommend using the excellent <a href="https://github.com/rs/SDWebImage">SDWebImage</a> instead.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
