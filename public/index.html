@@ -131,77 +131,6 @@
   <header>
   
     
-      <h1 class="entry-title"><a href="/blog/2015/01/22/collator/">Introducing Collator</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-22T23:32:00-08:00" pubdate data-updated="true">January 22, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I decided to write an Xcode plugin.</p>
-
-<p>Collator is a simple Xcode plugin that sorts things.  Right now, the things that it sorts are the property declarations currently selected in the code editor, by property name.  Why would you do this?  Well, when I&rsquo;m working on model objects, sometimes I like to just throw property names out there while I&rsquo;m putting things together, then come along later and clean things up.  Or I&rsquo;ll copy and paste the property names from documentation for the API I&rsquo;m working with, and the order isn&rsquo;t guaranteed.  It&rsquo;s nice to have alphabetized properties on model objects, so I decided to build a plugin to do this for me.  As a bonus, I get to learn how to make a plugin for Xcode, and work on a fun problem that will surely bring back fond memories of my CS days.</p>
-
-<h3>Implementation Notes</h3>
-
-<p>Objective-C properties come in many flavors.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@property</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">plainOldString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">nonatomicString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="kt">BOOL</span> <span class="n">isPrimitive</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">nonatomicStrongString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">gimmeMyString</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">readonlyCustomGetterString</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// This is a property with a comment.</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">numberOfEdgeCases</span><span class="p">;</span>
-</span><span class='line'><span class="cm">/**</span>
-</span><span class='line'><span class="cm"> *  This is a doc-style comment on a property.</span>
-</span><span class='line'><span class="cm"> */</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">documented</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Collator needs to be able to quickly pick out and sort the property names.  Thankfully, the designers of properties in the Objective-C language were kind enough to wrap all the complex parts in parentheses.  We also have the issue of comments, doc-style comments, extra whitespace, and probably other fun edge cases.  Fortunately, at the moment, I only need it to sort basic property declarations like the first one, without comments or anything complicated, so that&rsquo;s the first use case to implement.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
-    
       <h1 class="entry-title"><a href="/blog/2015/01/12/image-caching-with-afnetworking/">Image Caching With AFNetworking</a></h1>
       
       
@@ -399,6 +328,53 @@
 <p><em>Note: the reason armv7 and armv7s architectures had been specified for the app is that there is a dependency on a library that does not yet support 64-bit architectures.  It looks like <code>$(ARCHS_STANDARD_32_BIT)</code> is a much better way to handle that situation.</em></p>
 </div>
   
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/09/in-app-events-for-usage-statistics/">The Death of FlightPath and the Future of iOS Usage Statistics</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-09T15:11:00-08:00" pubdate data-updated="true">February 09, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
+
+<p>As a replacement, I have started working with <a href="http://www.flurry.com">Flurry</a>, which provides a great deal of usage statistics, including an event infrastructure similar to TestFlight&rsquo;s checkpoint system.</p>
+
+<p>Make sure to sign up for a free account and copy your application key.  Let&rsquo;s get started!</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/09/in-app-events-for-usage-statistics/">Read on &rarr;</a>
+    </footer>
   
 
 

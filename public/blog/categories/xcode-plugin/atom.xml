@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xcode-plugin | Isaac Overacker]]></title>
   <link href="http://www.overacker.me/blog/categories/xcode-plugin/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
-  <updated>2015-01-25T16:50:56-08:00</updated>
+  <updated>2015-01-25T16:59:09-08:00</updated>
   <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -201,47 +201,6 @@
 <h3>Sample Project</h3>
 
 <p>The sample code for this post is available on <a href="https://github.com/ioveracker/XcodePluginGuide">GitHub</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Introducing Collator]]></title>
-    <link href="http://www.overacker.me/blog/2015/01/22/collator/"/>
-    <updated>2015-01-22T23:32:00-08:00</updated>
-    <id>http://www.overacker.me/blog/2015/01/22/collator</id>
-    <content type="html"><![CDATA[<p>I decided to write an Xcode plugin.</p>
-
-<p>Collator is a simple Xcode plugin that sorts things.  Right now, the things that it sorts are the property declarations currently selected in the code editor, by property name.  Why would you do this?  Well, when I&rsquo;m working on model objects, sometimes I like to just throw property names out there while I&rsquo;m putting things together, then come along later and clean things up.  Or I&rsquo;ll copy and paste the property names from documentation for the API I&rsquo;m working with, and the order isn&rsquo;t guaranteed.  It&rsquo;s nice to have alphabetized properties on model objects, so I decided to build a plugin to do this for me.  As a bonus, I get to learn how to make a plugin for Xcode, and work on a fun problem that will surely bring back fond memories of my CS days.</p>
-
-<h3>Implementation Notes</h3>
-
-<p>Objective-C properties come in many flavors.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@property</span> <span class="n">NSString</span> <span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">plainOldString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">nonatomicString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="kt">BOOL</span> <span class="n">isPrimitive</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">nonatomicStrongString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">gimmeMyString</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">readonlyCustomGetterString</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// This is a property with a comment.</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">numberOfEdgeCases</span><span class="p">;</span>
-</span><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;&lt;</span><span class="n">em</span><span class="o">&gt;</span>
-</span><span class='line'> <span class="o">*</span>  <span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">doc</span><span class="o">-</span><span class="n">style</span> <span class="n">comment</span> <span class="n">on</span> <span class="n">a</span> <span class="n">property</span><span class="p">.</span>
-</span><span class='line'> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">documented</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Collator needs to be able to quickly pick out and sort the property names.  Thankfully, the designers of properties in the Objective-C language were kind enough to wrap all the complex parts in parentheses.  We also have the issue of comments, doc-style comments, extra whitespace, and probably other fun edge cases.  Fortunately, at the moment, I only need it to sort basic property declarations like the first one, without comments or anything complicated, so that&rsquo;s the first use case to implement.</p>
 ]]></content>
   </entry>
   

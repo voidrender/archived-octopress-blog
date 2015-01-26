@@ -9,7 +9,7 @@
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="As a longtime user of TestFlight for both test build distribution and usage analytics, I was extremely disappointed to find that they have cancelled &hellip;">
+  <meta name="description" content="Renaming an app on the iOS app store is a relatively simple thing to do. The biggest point of confusion is that you cannot rename your app unless it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,53 +79,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/09/in-app-events-for-usage-statistics/">The Death of FlightPath and the Future of iOS Usage Statistics</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-09T15:11:00-08:00" pubdate data-updated="true">February 09, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
-
-<p>As a replacement, I have started working with <a href="http://www.flurry.com">Flurry</a>, which provides a great deal of usage statistics, including an event infrastructure similar to TestFlight&rsquo;s checkpoint system.</p>
-
-<p>Make sure to sign up for a free account and copy your application key.  Let&rsquo;s get started!</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/02/09/in-app-events-for-usage-statistics/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
   
   
     <article>
@@ -359,9 +312,109 @@
 
     </article>
   
-  <div class="pagination">
+  
+    <article>
+      
+  <header>
+  
     
-      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+      <h1 class="entry-title"><a href="/blog/2013/07/10/getting-started-with-rbenv/">Managing Ruby Environments on OS X: Getting Started With Rbenv</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-10T00:00:00-07:00" pubdate data-updated="true">July 10, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&rsquo;ve done any development on OS X, chances are you&rsquo;ve run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.</p>
+
+<h1>Installation</h1>
+
+<p>There are several paths to installing rbenv.  The simplest is to use <a href="http://mxcl.github.io/homebrew/">homebrew</a>.  (If you don&rsquo;t have homebrew, it&rsquo;s easy to install.  Go <a href="http://mxcl.github.io/homebrew/">here</a>.)</p>
+
+<p>First, make sure your homebrew is up-to-date.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, install rbenv and ruby-build.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install rbenv
+</span><span class='line'>brew install ruby-build</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once it is done installing, you need to update your profile.  This is generally ~/.bash_profile.  Open it in your favorite editor, and add the following line.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>eval "$(rbenv init -)"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now execute that in your current bash session by using <code>source</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rbenv will be setup and ready to use.</p>
+
+<h1>rbenv Basics</h1>
+
+<p>The only installation of Ruby that you will have in rbenv at this point is the system version.  If you type the following command, it will show you what versions are installed.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv versions</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will show an asterisk next to the version rbenv is currently using.  To install a new version of Ruby, use the <code>rbenv install</code> command.  For example, to install Ruby 2.0.0-p247:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv install 2.0.0-p247
+</span><span class='line'>rbenv rehash</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will install version 2.0.0-p247 under ~/.rbenv/versions/.  The <code>rehash</code> command tells rbenv about the new executables.  You should use this command any time you install a new version of Ruby or install a gem that includes commands.  (You can read about the rehashing process <a href="https://github.com/sstephenson/rbenv#understanding-shims">here</a>.)  You can use this version globally by using the <code>global</code> command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv global 2.0.0-p247</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or, if you&rsquo;d like to specify that this version should be used in a specific directory, use the <code>local</code> command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv local 2.0.0-p247</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will create a file named .ruby-version in the current directory that states the version of Ruby to use while in this directory.  Rbenv looks for this file when you use Ruby commands.  This provides the ability to ensure everyone on your team is using the same version of Ruby when developing your app.</p>
+
+<p>That&rsquo;s it, you&rsquo;re up and running with rbenv!  For additional details and advanced features of rbenv, check out the official <a href="https://github.com/sstephenson/rbenv">GitHub repository</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
     

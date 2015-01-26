@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xcode | Isaac Overacker]]></title>
   <link href="http://www.overacker.me/blog/categories/xcode/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
-  <updated>2015-01-25T16:50:56-08:00</updated>
+  <updated>2015-01-25T16:59:09-08:00</updated>
   <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -205,47 +205,6 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Introducing Collator]]></title>
-    <link href="http://www.overacker.me/blog/2015/01/22/collator/"/>
-    <updated>2015-01-22T23:32:00-08:00</updated>
-    <id>http://www.overacker.me/blog/2015/01/22/collator</id>
-    <content type="html"><![CDATA[<p>I decided to write an Xcode plugin.</p>
-
-<p>Collator is a simple Xcode plugin that sorts things.  Right now, the things that it sorts are the property declarations currently selected in the code editor, by property name.  Why would you do this?  Well, when I&rsquo;m working on model objects, sometimes I like to just throw property names out there while I&rsquo;m putting things together, then come along later and clean things up.  Or I&rsquo;ll copy and paste the property names from documentation for the API I&rsquo;m working with, and the order isn&rsquo;t guaranteed.  It&rsquo;s nice to have alphabetized properties on model objects, so I decided to build a plugin to do this for me.  As a bonus, I get to learn how to make a plugin for Xcode, and work on a fun problem that will surely bring back fond memories of my CS days.</p>
-
-<h3>Implementation Notes</h3>
-
-<p>Objective-C properties come in many flavors.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@property</span> <span class="n">NSString</span> <span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">plainOldString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">nonatomicString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="kt">BOOL</span> <span class="n">isPrimitive</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">nonatomicStrongString</span><span class="p">;</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">gimmeMyString</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">readonlyCustomGetterString</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// This is a property with a comment.</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">numberOfEdgeCases</span><span class="p">;</span>
-</span><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;&lt;</span><span class="n">em</span><span class="o">&gt;</span>
-</span><span class='line'> <span class="o">*</span>  <span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">doc</span><span class="o">-</span><span class="n">style</span> <span class="n">comment</span> <span class="n">on</span> <span class="n">a</span> <span class="n">property</span><span class="p">.</span>
-</span><span class='line'> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">documented</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Collator needs to be able to quickly pick out and sort the property names.  Thankfully, the designers of properties in the Objective-C language were kind enough to wrap all the complex parts in parentheses.  We also have the issue of comments, doc-style comments, extra whitespace, and probably other fun edge cases.  Fortunately, at the moment, I only need it to sort basic property declarations like the first one, without comments or anything complicated, so that&rsquo;s the first use case to implement.</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Integrating Test Dependencies with CocoaPods]]></title>
     <link href="http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/"/>
     <updated>2014-09-15T13:49:00-07:00</updated>
@@ -376,6 +335,110 @@
 <h1>Upload Binary</h1>
 
 <p>Login to iTunes Connect and create a new version of your app.  When you edit the metadata for the new version of your app, you can now edit the name of the app.  Enter the new name for your app, create your new binary, and upload.  If you make it through the review process, your app will be ready to launch under a new name!  As long as you don&rsquo;t change the Bundle Identifier, existing users will receive the update.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Managing Project Dependencies in Xcode: An Introduction to CocoaPods]]></title>
+    <link href="http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
+    <updated>2013-07-29T00:00:00-07:00</updated>
+    <id>http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
+    <content type="html"><![CDATA[<p>The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on <a href="http://github.com">GitHub</a>, which has improved a lot in the last few years to streamline the process.  With <a href="http://mac.github.com">GitHub for Mac</a>, it&rsquo;s easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into <em>your</em> Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.</p>
+
+<p>It doesn&rsquo;t have to be this way.</p>
+
+<!-- more -->
+
+
+<h1>CocoaPods</h1>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is the best way to manage library dependencies with Xcode.  It&rsquo;s still in the alpha phase, but it&rsquo;s continually being improved.  With CocoaPods, you can easily manage your project dependencies, even specifying the specific version number for each.  This is all tracked in a plaintext file, so you can keep this in your source repository and your whole team will automatically be in sync.  As an added bonus, you won&rsquo;t have to keep the projects in your source repository, so you can keep your repository&rsquo;s footprint small.</p>
+
+<h1>Installation</h1>
+
+<p>CocoaPods is distributed as a <a href="http://ruby-lang.org">Ruby</a> gem.  If you&rsquo;re new to Ruby, you should consider using an environment manager like <a href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/">rbenv</a> to keep track of your Ruby environments.  It&rsquo;s not just for <a href="http://rubyonrails.org/">Rails</a>&mdash;more and more command line tools are being written in Ruby, and they often have specific Ruby version requirements.  I wrote a <a href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/">simple guide</a> to getting started with rbenv that will have you up and running in no time.</p>
+
+<p>If you don&rsquo;t have it already, install Ruby 2.0.0-p247.  CocoaPods will work in older versions, but I wouldn&rsquo;t go older than 1.9.3.  It&rsquo;s distributed as a gem, so installing is simple.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install cocoapods</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This will download and install CocoaPods and its dependencies.  (Don&rsquo;t forget to <a href="https://github.com/sstephenson/rbenv#rbenv-rehash">rehash</a> if you&rsquo;re using rbenv.)</p>
+
+<p>Now, perform the initial setup, which will create ~/.cocoapods, setup the initial podspec repos, <a href="https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/command/setup.rb">and more</a>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pod setup</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Installation is that simple.  You&rsquo;re ready to get started.</p>
+
+<h1>Podfile</h1>
+
+<p>Dependencies are tracked in a special plaintext file named Podfile.  You should create this file in the same directory as your Xcode project.  The first line of this file tells CocoaPods what platform your project is targeting (iOS or OS X), and the subsequent lines list the dependencies for your project.</p>
+
+<p>E.g., a very simple iOS Podfile specifying the latest LastFm and TestFlightSDK frameworks:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
+</span><span class='line'>pod &lsquo;LastFm&rsquo;
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Note that the platform is case sensitive.  If you want to specify the version for a pod, simply append the version number like so:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
+</span><span class='line'>pod &lsquo;LastFm&rsquo;
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;1.2.6&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>You can also prefix the version number with a <a href="http://docs.rubygems.org/read/chapter/16#page74">version constraint</a> to indicate a range of versions.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
+</span><span class='line'>pod &lsquo;LastFm&rsquo;
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;~> 1.2&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Finding the pods you need for your project is simple thanks to the search function on the <a href="http://cocoapods.org/">CocoaPods site</a>.</p>
+
+<h1>Workspace Generation</h1>
+
+<p>Once your Podfile has been defined, the next step is to install the pods and generate the Xcode workspace.  This, too, is quite simple.  In the same directory as your Podfile, run the following command.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pod install</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This will download the pods and build a Xcode workspace that includes a Pods target in addition to your Xcode project.  Note that you need to use the .xcworkspace file generated by CocoaPods from now on when working with your project.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>open YourProject.xcworkspace</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Whenever you add a new pod to your Podfile, just run <code>pod install</code> again to regenerate the workspace.</p>
+
+<h1>Source Control</h1>
+
+<p>I like to keep the pods out of my source code repositories.  You can update the ignore file for your source control repository to exclude the Pods/ directory created by CocoaPods.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>.gitignore or .hgignore </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Pods/</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I like to keep the <code>Podfile</code> and <code>Podfile.lock</code> files in source control so that it&rsquo;s easy to recreate the workspace using <code>pod install</code> after cloning the repository.</p>
+
+<h1>More Info</h1>
+
+<p>This is just the beginning of what CocoaPods can do.  Explore more of the advanced features&mdash;such as specifying pods for certain targets&mdash;in the <a href="http://docs.cocoapods.org/">CocoaPods documentation</a>.</p>
 ]]></content>
   </entry>
   
