@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Introducing Collator"
+date: 2015-01-22 23:32
+comments: true
+categories: xcode xcode-plugin ios objective-c
+---
+I decided to write an Xcode plugin.
+
+Collator is a simple Xcode plugin that sorts things.  Right now, the things that it sorts are the property declarations currently selected in the code editor, by property name.  Why would you do this?  Well, when I'm working on model objects, sometimes I like to just throw property names out there while I'm putting things together, then come along later and clean things up.  Or I'll copy and paste the property names from documentation for the API I'm working with, and the order isn't guaranteed.  It's nice to have alphabetized properties on model objects, so I decided to build a plugin to do this for me.  As a bonus, I get to learn how to make a plugin for Xcode, and work on a fun problem that will surely bring back fond memories of my CS days.
+
+###Implementation Notes
+Objective-C properties come in many flavors.
+
+{% codeblock lang:objc %}
+@property NSString *plainOldString;
+@property (nonatomic) NSString *nonatomicString;
+@property (nonatomic) BOOL isPrimitive;
+@property (nonatomic, strong) NSString *nonatomicStrongString;
+@property (readonly, getter=gimmeMyString) NSString *readonlyCustomGetterString;
+// This is a property with a comment.
+@property (nonatomic) NSInteger numberOfEdgeCases;
+/**
+ *  This is a doc-style comment on a property.
+ */
+@property (nonatomic, weak) NSString *documented;
+{% endcodeblock %}
+
+Collator needs to be able to quickly pick out and sort the property names.  Thankfully, the designers of properties in the Objective-C language were kind enough to wrap all the complex parts in parentheses.  We also have the issue of comments, doc-style comments, extra whitespace, and probably other fun edge cases.  Fortunately, at the moment, I only need it to sort basic property declarations like the first one, without comments or anything complicated, so that's the first use case to implement.

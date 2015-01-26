@@ -9,7 +9,7 @@
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="AFNetworking is one of the most popular open-source networking frameworks for iOS. You&rsquo;re probably already using it, but if you&rsquo;re not, &hellip;">
+  <meta name="description" content="Xcode has a rich ecosystem of third-party plugins, exposed and cataloged by the wonderful Xcode plugin Alcatraz. Some of my favorites: Auto-Importer &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,122 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/25/creating-an-xcode-plugin/">Creating an Xcode Plugin: A Quick-Start Guide</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-25T14:19:00-08:00" pubdate data-updated="true">January 25, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Xcode has a rich ecosystem of third-party plugins, exposed and cataloged by the wonderful <em>Xcode plugin</em> <a href="http://alcatraz.io/">Alcatraz</a>.  Some of my favorites: <a href="https://github.com/lucholaf/Auto-Importer-for-Xcode">Auto-Importer</a>, <a href="https://github.com/neonichu/BBUFullIssueNavigator">BBUFullIssueNavigator</a>, and <a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin">FuzzyAutocomplete</a>.</p>
+
+<p>However extensive the Xcode plugin catalog may be, there are surely other useful plugins to be written.  The process of writing a plugin is not very well documented, and frustratingly, much of the code required to interact with Xcode is still private.  However, thanks to the efforts of a few clever developers, getting started is much easier than it used to be.  Read on for a quick-start guide to creating an Xcode (5+) plugin.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/25/creating-an-xcode-plugin/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/22/collator/">Introducing Collator</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-22T23:32:00-08:00" pubdate data-updated="true">January 22, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I decided to write an Xcode plugin.</p>
+
+<p>Collator is a simple Xcode plugin that sorts things.  Right now, the things that it sorts are the property declarations currently selected in the code editor, by property name.  Why would you do this?  Well, when I&rsquo;m working on model objects, sometimes I like to just throw property names out there while I&rsquo;m putting things together, then come along later and clean things up.  Or I&rsquo;ll copy and paste the property names from documentation for the API I&rsquo;m working with, and the order isn&rsquo;t guaranteed.  It&rsquo;s nice to have alphabetized properties on model objects, so I decided to build a plugin to do this for me.  As a bonus, I get to learn how to make a plugin for Xcode, and work on a fun problem that will surely bring back fond memories of my CS days.</p>
+
+<h3>Implementation Notes</h3>
+
+<p>Objective-C properties come in many flavors.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@property</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">plainOldString</span><span class="p">;</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">nonatomicString</span><span class="p">;</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="kt">BOOL</span> <span class="n">isPrimitive</span><span class="p">;</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">nonatomicStrongString</span><span class="p">;</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">gimmeMyString</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">readonlyCustomGetterString</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// This is a property with a comment.</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">numberOfEdgeCases</span><span class="p">;</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *  This is a doc-style comment on a property.</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">documented</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Collator needs to be able to quickly pick out and sort the property names.  Thankfully, the designers of properties in the Objective-C language were kind enough to wrap all the complex parts in parentheses.  We also have the issue of comments, doc-style comments, extra whitespace, and probably other fun edge cases.  Fortunately, at the moment, I only need it to sort basic property declarations like the first one, without comments or anything complicated, so that&rsquo;s the first use case to implement.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -281,103 +397,6 @@
 <p>The solution was to update the target architectures for the app to <code>$(ARCHS_STANDARD_32_BIT)</code> instead of manually specifying both <code>armv7</code> and <code>armv7s</code>.  Then, when running <code>pod install</code>, the <code>$(ARCHS_STANDARD_32_BIT)</code> is set for the Pods-* projects as well and everything is happy.</p>
 
 <p><em>Note: the reason armv7 and armv7s architectures had been specified for the app is that there is a dependency on a library that does not yet support 64-bit architectures.  It looks like <code>$(ARCHS_STANDARD_32_BIT)</code> is a much better way to handle that situation.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/09/in-app-events-for-usage-statistics/">The Death of FlightPath and the Future of iOS Usage Statistics</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-09T15:11:00-08:00" pubdate data-updated="true">February 09, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As a longtime user of <a href="http://www.testflightapp.com">TestFlight</a> for both test build distribution and usage analytics, I was extremely disappointed to find that they have <a href="http://imgur.com/fcYo5dt">cancelled their FlightPath beta program</a> for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.</p>
-
-<p>As a replacement, I have started working with <a href="http://www.flurry.com">Flurry</a>, which provides a great deal of usage statistics, including an event infrastructure similar to TestFlight&rsquo;s checkpoint system.</p>
-
-<p>Make sure to sign up for a free account and copy your application key.  Let&rsquo;s get started!</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/02/09/in-app-events-for-usage-statistics/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/05/app-store-app-rename/">Renaming an App on the App Store</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-05T17:38:00-08:00" pubdate data-updated="true">November 05, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Renaming an app on the iOS app store is a relatively simple thing to do.  The biggest point of confusion is that you cannot rename your app unless it is in an <em>editable state</em>.  You&rsquo;re probably going to want to change the display name for your app, so the easiest way to put your app in an editable state is to upload a new binary.</p>
-
-<h1>Bundle Identifier</h1>
-
-<p>If you want to rename your Xcode project to reflect the new app name, you won&rsquo;t want your bundle identifier to change along with the project name since this is the unique identifier for your app on the device.  By default, the bundle identifier includes <code>${PRODUCT_NAME}</code> or a variant thereof, e.g. <code>${PRODUCT_NAME:rfc1034identifier}</code>.  You won&rsquo;t want the Bundle Identifier to change when you rename your project, so the first thing you&rsquo;ll want to do is copy your Bundle Identifier from iTunes Connect and paste that in the Bundle Identifier field in the info.plist file for your app.</p>
-
-<h1>Rename Project</h1>
-
-<p>The fastest (and most thorough) way to rename your app is to simply rename the project in Xcode.  Slowly double-click on the project file in Xcode so that the name becomes editable and change the name.  After pressing enter, a dialog will pop up asking if you&rsquo;d like to rename project content items.  You probably want to keep all of these in sync, so choose Rename.</p>
-
-<h1>Upload Binary</h1>
-
-<p>Login to iTunes Connect and create a new version of your app.  When you edit the metadata for the new version of your app, you can now edit the name of the app.  Enter the new name for your app, create your new binary, and upload.  If you make it through the review process, your app will be ready to launch under a new name!  As long as you don&rsquo;t change the Bundle Identifier, existing users will receive the update.</p>
 </div>
   
   

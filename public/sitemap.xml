@@ -2,60 +2,68 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.overacker.me/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/
         </loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/
         </loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/2013/08/24/embedding-video-with-mnml/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/2013/11/05/app-store-app-rename/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/2014/02/09/in-app-events-for-usage-statistics/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/2014/08/03/architecture-headaches-with-cocoapods/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/
         </loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/2015/01/12/image-caching-with-afnetworking/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.overacker.me/blog/2015/01/22/collator/</loc>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.overacker.me/blog/2015/01/25/creating-an-xcode-plugin/</loc>
+        <lastmod>2015-01-25T16:50:56-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/about/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/blog/archives/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T16:50:56-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T16:50:56-08:00</lastmod>
     </url>
     <url>
         <loc>http://www.overacker.me/robots.txt</loc>
-        <lastmod>2015-01-12T14:12:04-08:00</lastmod>
+        <lastmod>2015-01-25T14:41:30-08:00</lastmod>
     </url>
 </urlset>
