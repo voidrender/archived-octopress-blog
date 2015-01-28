@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: guide | Isaac Overacker]]></title>
-  <link href="http://www.overacker.me/blog/categories/guide/atom.xml" rel="self"/>
+  <title><![CDATA[Category: tutorial | Isaac Overacker]]></title>
+  <link href="http://www.overacker.me/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
   <updated>2015-01-28T10:13:11-08:00</updated>
   <id>http://www.overacker.me/</id>

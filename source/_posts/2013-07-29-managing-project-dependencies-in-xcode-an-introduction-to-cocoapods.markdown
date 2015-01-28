@@ -3,7 +3,7 @@ layout: post
 title: "Managing Project Dependencies in Xcode: An Introduction to CocoaPods"
 date: 2013-07-29 00:00
 comments: true
-categories: xcode cocoatouch ios osx dependency-management cocoapods
+categories: xcode cocoatouch ios osx dependency-management cocoapods tutorial guide how-to
 ---
 The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on [GitHub](http://github.com), which has improved a lot in the last few years to streamline the process.  With [GitHub for Mac](http://mac.github.com), it's easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into *your* Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.
 

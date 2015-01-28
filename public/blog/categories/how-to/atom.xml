@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: objective-c | Isaac Overacker]]></title>
-  <link href="http://www.overacker.me/blog/categories/objective-c/atom.xml" rel="self"/>
+  <title><![CDATA[Category: how-to | Isaac Overacker]]></title>
+  <link href="http://www.overacker.me/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
   <updated>2015-01-28T10:13:11-08:00</updated>
   <id>http://www.overacker.me/</id>
@@ -205,50 +205,16 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Image Caching with AFNetworking]]></title>
-    <link href="http://www.overacker.me/blog/2015/01/12/image-caching-with-afnetworking/"/>
-    <updated>2015-01-12T13:09:00-08:00</updated>
-    <id>http://www.overacker.me/blog/2015/01/12/image-caching-with-afnetworking</id>
-    <content type="html"><![CDATA[<p><a href="http://www.afnetworking.com">AFNetworking</a> is one of the most popular open-source networking frameworks for iOS.  You&rsquo;re probably already using it, but if you&rsquo;re not, you should consider it.  One of the lesser-known features of AFNetworking is the ability to easily load an image from a URL to be used in a <code>UIImageView</code>.</p>
+    <title type="html"><![CDATA[Integrating Test Dependencies with CocoaPods]]></title>
+    <link href="http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods/"/>
+    <updated>2014-09-15T13:49:00-07:00</updated>
+    <id>http://www.overacker.me/blog/2014/09/15/integrating-test-dependencies-with-cocoapods</id>
+    <content type="html"><![CDATA[<p>Most Xcode projects should have some level of test coverage, and any time unit tests are involved it&rsquo;s nice to have a framework for generating mock objects.  However, we don&rsquo;t want to bloat our production app package with these test frameworks, so it&rsquo;s nice to link these libraries only with the test target.  Configuring this properly can be tricky, and the CocoaPods documentation isn&rsquo;t very clear on exactly how to accomplish this in the podfile.</p>
 
-<!-- more -->
+<p>The cleanest solution I&rsquo;ve found to this problem involves specifying the pods for each target individually and using a Ruby function to import the common pods.  Here is a sample podfile that accomplishes this:</p>
 
-
-<h1>Simple Image Caching</h1>
-
-<p>Start by importing the <code>UIImageView+AFNetworking</code> header and several useful methods will be added to the <code>UIImageView</code> class.</p>
-
-<p>For simple in-memory caching, you can use the <code>setImageWithURL:</code> and <code>setImageWithURL:placeholderImage:</code> methods and the image will be retrieved from the in-memory cache, if the image exists, otherwise it will be fetched from the URL and stored in the cache.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">imageURL</span><span class="p">]];</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="c1">// Or, with a placeholder image displayed while the image is being downloaded:</span>
-</span><span class='line'><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">imageURL</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>      <span class="nl">placeholderImage:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;placeholder&quot;</span><span class="p">]];</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h1>Disk Caching</h1>
-
-<p>If you need to cache the image for longer than the user&rsquo;s session, you can use the <code>setImageWithURLRequest:placeholderImage:success:failure:</code> method.  Set the caching policy on your <code>NSURLRequest</code> to whatever you need and you&rsquo;re good to go!</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -264,29 +230,230 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">imageRequest</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nl">requestWithURL:</span><span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">imageURL</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>&lt;p>platform :ios, &lsquo;7.0&rsquo;&lt;/p>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>                                          <span class="nl">cachePolicy:</span><span class="n">NSURLRequestReturnCacheDataElseLoad</span>
-</span><span class='line'>                                      <span class="nl">timeoutInterval:</span><span class="mi">60</span><span class="p">];</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>&lt;p>def import_common_pods
+</span><span class='line'>   pod &lsquo;AFNetworking&rsquo;
+</span><span class='line'>end&lt;/p>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">[</span><span class="n">imageView</span> <span class="nl">setImageWithURLRequest:</span><span class="n">imageRequest</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>&lt;p>target &lsquo;MyAppTarget&rsquo; do
+</span><span class='line'>   import_common_pods
+</span><span class='line'>end&lt;/p>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>             <span class="nl">placeholderImage:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;placeholder&quot;</span><span class="p">]</span>
-</span><span class='line'>                      <span class="nl">success:</span><span class="nb">nil</span>
-</span><span class='line'>                      <span class="nl">failure:</span><span class="nb">nil</span><span class="p">];</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>&lt;p>target &lsquo;MyAppTestTarget&rsquo; do
+</span><span class='line'>   import_common_pods
+</span><span class='line'>   pod &lsquo;OCMock&rsquo;
+</span><span class='line'>end&lt;/p>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Note that if you supply a success block, you will be responsible for setting the image within the success block.  If one is not provided, AFNetworking will set the image for you.</p>
+<p>Note that you may run into a few issues with this if you&rsquo;re  adding this to an existing project and the previous podfile did not explicitly specify the non-test target.  In that case, you may need to delete the old Pods.xcconfig and libPods.a files then regenerate your workspace with <code>pod install</code>.</p>
 
-<h1>Alternative</h1>
+<h1>Update</h1>
 
-<p>If AFNetworking isn&rsquo;t your thing, I highly recommend using the excellent <a href="https://github.com/rs/SDWebImage">SDWebImage</a> instead.</p>
+<p>As of CocoaPods 0.34, there&rsquo;s a cleaner solution built-in:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source &lsquo;&lt;a href="https://github.com/CocoaPods/Specs.git">https://github.com/CocoaPods/Specs.git&lt;/a>&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>platform :ios, &lsquo;7.0&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>pod &lsquo;AFNetworking&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>target &ldquo;MyAppTestTarget&rdquo;, :exclusive => true do
+</span><span class='line'>   pod &lsquo;OCMock&rsquo;
+</span><span class='line'>end&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Managing Project Dependencies in Xcode: An Introduction to CocoaPods]]></title>
+    <link href="http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
+    <updated>2013-07-29T00:00:00-07:00</updated>
+    <id>http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
+    <content type="html"><![CDATA[<p>The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on <a href="http://github.com">GitHub</a>, which has improved a lot in the last few years to streamline the process.  With <a href="http://mac.github.com">GitHub for Mac</a>, it&rsquo;s easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into <em>your</em> Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.</p>
+
+<p>It doesn&rsquo;t have to be this way.</p>
+
+<!-- more -->
+
+
+<h1>CocoaPods</h1>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is the best way to manage library dependencies with Xcode.  It&rsquo;s still in the alpha phase, but it&rsquo;s continually being improved.  With CocoaPods, you can easily manage your project dependencies, even specifying the specific version number for each.  This is all tracked in a plaintext file, so you can keep this in your source repository and your whole team will automatically be in sync.  As an added bonus, you won&rsquo;t have to keep the projects in your source repository, so you can keep your repository&rsquo;s footprint small.</p>
+
+<h1>Installation</h1>
+
+<p>CocoaPods is distributed as a <a href="http://ruby-lang.org">Ruby</a> gem.  If you&rsquo;re new to Ruby, you should consider using an environment manager like <a href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/">rbenv</a> to keep track of your Ruby environments.  It&rsquo;s not just for <a href="http://rubyonrails.org/">Rails</a>&mdash;more and more command line tools are being written in Ruby, and they often have specific Ruby version requirements.  I wrote a <a href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/">simple guide</a> to getting started with rbenv that will have you up and running in no time.</p>
+
+<p>If you don&rsquo;t have it already, install Ruby 2.0.0-p247.  CocoaPods will work in older versions, but I wouldn&rsquo;t go older than 1.9.3.  It&rsquo;s distributed as a gem, so installing is simple.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install cocoapods</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This will download and install CocoaPods and its dependencies.  (Don&rsquo;t forget to <a href="https://github.com/sstephenson/rbenv#rbenv-rehash">rehash</a> if you&rsquo;re using rbenv.)</p>
+
+<p>Now, perform the initial setup, which will create ~/.cocoapods, setup the initial podspec repos, <a href="https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/command/setup.rb">and more</a>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pod setup</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Installation is that simple.  You&rsquo;re ready to get started.</p>
+
+<h1>Podfile</h1>
+
+<p>Dependencies are tracked in a special plaintext file named Podfile.  You should create this file in the same directory as your Xcode project.  The first line of this file tells CocoaPods what platform your project is targeting (iOS or OS X), and the subsequent lines list the dependencies for your project.</p>
+
+<p>E.g., a very simple iOS Podfile specifying the latest LastFm and TestFlightSDK frameworks:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
+</span><span class='line'>pod &lsquo;LastFm&rsquo;
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Note that the platform is case sensitive.  If you want to specify the version for a pod, simply append the version number like so:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
+</span><span class='line'>pod &lsquo;LastFm&rsquo;
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;1.2.6&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>You can also prefix the version number with a <a href="http://docs.rubygems.org/read/chapter/16#page74">version constraint</a> to indicate a range of versions.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
+</span><span class='line'>pod &lsquo;LastFm&rsquo;
+</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;~> 1.2&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Finding the pods you need for your project is simple thanks to the search function on the <a href="http://cocoapods.org/">CocoaPods site</a>.</p>
+
+<h1>Workspace Generation</h1>
+
+<p>Once your Podfile has been defined, the next step is to install the pods and generate the Xcode workspace.  This, too, is quite simple.  In the same directory as your Podfile, run the following command.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pod install</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This will download the pods and build a Xcode workspace that includes a Pods target in addition to your Xcode project.  Note that you need to use the .xcworkspace file generated by CocoaPods from now on when working with your project.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>open YourProject.xcworkspace</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Whenever you add a new pod to your Podfile, just run <code>pod install</code> again to regenerate the workspace.</p>
+
+<h1>Source Control</h1>
+
+<p>I like to keep the pods out of my source code repositories.  You can update the ignore file for your source control repository to exclude the Pods/ directory created by CocoaPods.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>.gitignore or .hgignore </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Pods/</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I like to keep the <code>Podfile</code> and <code>Podfile.lock</code> files in source control so that it&rsquo;s easy to recreate the workspace using <code>pod install</code> after cloning the repository.</p>
+
+<h1>More Info</h1>
+
+<p>This is just the beginning of what CocoaPods can do.  Explore more of the advanced features&mdash;such as specifying pods for certain targets&mdash;in the <a href="http://docs.cocoapods.org/">CocoaPods documentation</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Managing Ruby Environments on OS X: Getting Started with rbenv]]></title>
+    <link href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/"/>
+    <updated>2013-07-10T00:00:00-07:00</updated>
+    <id>http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;ve done any development on OS X, chances are you&rsquo;ve run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.</p>
+
+<h1>Installation</h1>
+
+<p>There are several paths to installing rbenv.  The simplest is to use <a href="http://mxcl.github.io/homebrew/">homebrew</a>.  (If you don&rsquo;t have homebrew, it&rsquo;s easy to install.  Go <a href="http://mxcl.github.io/homebrew/">here</a>.)</p>
+
+<p>First, make sure your homebrew is up-to-date.</p>
+
+<p><code>
+brew update
+</code></p>
+
+<p>Then, install rbenv and ruby-build.</p>
+
+<p><code>
+brew install rbenv
+brew install ruby-build
+</code></p>
+
+<p>Once it is done installing, you need to update your profile.  This is generally ~/.bash_profile.  Open it in your favorite editor, and add the following line.</p>
+
+<p><code>
+eval "$(rbenv init -)"
+</code></p>
+
+<p>Now execute that in your current bash session by using <code>source</code>.</p>
+
+<p><code>
+source ~/.bash_profile
+</code>
+Rbenv will be setup and ready to use.</p>
+
+<h1>rbenv Basics</h1>
+
+<p>The only installation of Ruby that you will have in rbenv at this point is the system version.  If you type the following command, it will show you what versions are installed.</p>
+
+<p><code>
+rbenv versions
+</code></p>
+
+<p>This will show an asterisk next to the version rbenv is currently using.  To install a new version of Ruby, use the <code>rbenv install</code> command.  For example, to install Ruby 2.0.0-p247:</p>
+
+<p><code>
+rbenv install 2.0.0-p247
+rbenv rehash
+</code></p>
+
+<p>This will install version 2.0.0-p247 under ~/.rbenv/versions/.  The <code>rehash</code> command tells rbenv about the new executables.  You should use this command any time you install a new version of Ruby or install a gem that includes commands.  (You can read about the rehashing process <a href="https://github.com/sstephenson/rbenv#understanding-shims">here</a>.)  You can use this version globally by using the <code>global</code> command:</p>
+
+<p><code>
+rbenv global 2.0.0-p247
+</code></p>
+
+<p>Or, if you&rsquo;d like to specify that this version should be used in a specific directory, use the <code>local</code> command:</p>
+
+<p><code>
+rbenv local 2.0.0-p247
+</code></p>
+
+<p>This will create a file named .ruby-version in the current directory that states the version of Ruby to use while in this directory.  Rbenv looks for this file when you use Ruby commands.  This provides the ability to ensure everyone on your team is using the same version of Ruby when developing your app.</p>
+
+<p>That&rsquo;s it, you&rsquo;re up and running with rbenv!  For additional details and advanced features of rbenv, check out the official <a href="https://github.com/sstephenson/rbenv">GitHub repository</a>.</p>
 ]]></content>
   </entry>
   

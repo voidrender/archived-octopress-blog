@@ -3,7 +3,7 @@ layout: post
 title: "Creating an Xcode Plugin: A Quick-Start Guide"
 date: 2015-01-25 14:19
 comments: true
-categories: xcode xcode-plugin objective-c osx
+categories: xcode xcode-plugin objective-c osx tutorial guide how-to
 ---
 Xcode has a rich ecosystem of third-party plugins, exposed and cataloged by the wonderful *Xcode plugin* [Alcatraz](http://alcatraz.io/).  Some of my favorites: [Auto-Importer](https://github.com/lucholaf/Auto-Importer-for-Xcode), [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator), and [FuzzyAutocomplete](https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin).
 

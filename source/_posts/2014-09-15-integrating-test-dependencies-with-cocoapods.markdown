@@ -3,7 +3,7 @@ layout: post
 title: "Integrating Test Dependencies with CocoaPods"
 date: 2014-09-15 13:49
 comments: true
-categories: cocoapods ios xcode automated-tests
+categories: cocoapods ios xcode automated-tests how-to
 ---
 Most Xcode projects should have some level of test coverage, and any time unit tests are involved it's nice to have a framework for generating mock objects.  However, we don't want to bloat our production app package with these test frameworks, so it's nice to link these libraries only with the test target.  Configuring this properly can be tricky, and the CocoaPods documentation isn't very clear on exactly how to accomplish this in the podfile.
 

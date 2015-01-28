@@ -3,7 +3,7 @@ layout: post
 title: "The Death of FlightPath and the Future of iOS Usage Statistics"
 date: 2014-02-09 15:11
 comments: true
-categories: ios data-collection usage-statistics flightpath testflight flurry
+categories: ios data-collection usage-statistics flightpath testflight flurry tutorial guide
 ---
 As a longtime user of [TestFlight](http://www.testflightapp.com) for both test build distribution and usage analytics, I was extremely disappointed to find that they have [cancelled their FlightPath beta program](http://imgur.com/fcYo5dt) for tracking usage statistics in your live app once distributed via the App Store.  It was great to be able to reuse the same checkpoint infrastructure to collect usage statistics.  Alas, they claim to be focusing more on their core product, which might be a good thing in the end.
 

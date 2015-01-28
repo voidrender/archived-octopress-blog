@@ -3,7 +3,7 @@ layout: post
 title: "Managing Ruby Environments on OS X: Getting Started with rbenv"
 date: 2013-07-10
 comments: true
-categories: ruby osx rbenv homebrew guide bash
+categories: ruby osx rbenv homebrew guide bash tutorial how-to
 ---
 If you've done any development on OS X, chances are you've run into various apps and tools that require different versions of Ruby.  Manually installing and maintaining multiple versions of Ruby is a pain.  Fortunately, there are tools to make this process easier.  Rbenv is a lightweight, focused tool that helps you manage different versions of Ruby and switch between them as needed.  You can even set the specific Ruby version for your app to keep your team on the same page.
 
