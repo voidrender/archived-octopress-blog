@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: unit-testing | Isaac Overacker]]></title>
+  <link href="http://www.overacker.me/blog/categories/unit-testing/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2015-02-28T10:29:44-08:00</updated>
+  <id>http://www.overacker.me/</id>
+  <author>
+    <name><![CDATA[Isaac Overacker]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing Alcove]]></title>
+    <link href="http://www.overacker.me/blog/2015/02/28/alcove/"/>
+    <updated>2015-02-28T09:52:00-08:00</updated>
+    <id>http://www.overacker.me/blog/2015/02/28/alcove</id>
+    <content type="html"><![CDATA[<p>I have been spending quite a bit of time working with Xcode Server for continuous integration of a fairly large iOS project.  As part of the build process, I wanted to generate a test coverage report and place it in on the web server running on our build server.  I investigated several existing tools that are capable of generating reports, but found things about each that I disliked.  <a href="http://frankencover.it">Frankencover</a> is a good solution, but it requires installing the JDK, which is not a normal part of the iOS development stack.  <a href="https://github.com/jonreid/XcodeCoverage">XcodeCoverage</a> was another option that I investigated, but it required some executable files that I didn&rsquo;t want to store in our repository.  Dissatisfied with the existing options, I decided that a simple Ruby script could do the job and set out to write my first gem.</p>
+
+<h1>Alcove</h1>
+
+<p><a href="https://github.com/ioveracker/alcove">Alcove</a> is a simple gem that can quickly and reliably generate a code coverage report for an iOS project.  Installation is simple, since it&rsquo;s a gem.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install alcove</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>That&rsquo;s it.  (You&rsquo;ll also need to install lcov, either with Homebrew or MacPorts.)</p>
+
+<p>To generate a report, you just need to give alcove your <code>${PRODUCT_NAME}</code> and it will do the rest.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alcove &mdash;product-name YourProductName</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After crunching some files, the report will be ready to view in ./alcove-report/.</p>
+
+<p><img class="<a" src="href="https://camo.githubusercontent.com/465d99ff53adad12faf5f51802b51e12cba4d074/687474703a2f2f692e696d6775722e636f6d2f344464496374712e706e673f31">https://camo.githubusercontent.com/465d99ff53adad12faf5f51802b51e12cba4d074/687474703a2f2f692e696d6775722e636f6d2f344464496374712e706e673f31</a>"></p>
+
+<p>Check out the <a href="https://github.com/ioveracker/Alcove/blob/master/README.md">README</a> for more information (be sure to check out the options), or the <a href="https://github.com/ioveracker/AlcoveDemo">demo project</a> to see it in action.</p>
+]]></content>
+  </entry>
+  
+</feed>
