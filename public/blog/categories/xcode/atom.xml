@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xcode | Isaac Overacker]]></title>
   <link href="http://www.overacker.me/blog/categories/xcode/atom.xml" rel="self"/>
   <link href="http://www.overacker.me/"/>
-  <updated>2015-01-28T10:13:11-08:00</updated>
+  <updated>2015-02-28T10:19:51-08:00</updated>
   <id>http://www.overacker.me/</id>
   <author>
     <name><![CDATA[Isaac Overacker]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing alcove]]></title>
+    <link href="http://www.overacker.me/blog/2015/02/28/alcove/"/>
+    <updated>2015-02-28T09:52:00-08:00</updated>
+    <id>http://www.overacker.me/blog/2015/02/28/alcove</id>
+    <content type="html"><![CDATA[<p>I have been spending quite a bit of time working with Xcode Server for continuous integration of a fairly large iOS project.  As part of the build process, I wanted to generate a test coverage report and place it in on the web server running on our build server.  I investigated several existing tools that are capable of generating reports, but found things about each that I disliked.  <a href="http://frankencover.it">Frankencover</a> is a good solution, but it requires installing the JDK, which is not a normal part of the iOS development stack.  <a href="https://github.com/jonreid/XcodeCoverage">XcodeCoverage</a> was another option that I investigated, but it required some executable files that I didn&rsquo;t want to store in our repository.  Dissatisfied with the existing options, I decided that a simple Ruby script could do the job and set out to write my first gem.</p>
+
+<h1>Alcove</h1>
+
+<p><a href="https://github.com/ioveracker/alcove">Alcove</a> is a simple gem that can quickly and reliably generate a code coverage report for an iOS project.  Installation is simple, since it&rsquo;s a gem.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install alcove</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>That&rsquo;s it.  (You&rsquo;ll also need to install lcov, either with Homebrew or MacPorts.)</p>
+
+<p>To generate a report, you just need to give alcove your <code>${PRODUCT_NAME}</code> and it will do the rest.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alcove &mdash;product-name YourProductName</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After crunching some files, the report will be ready to view in ./alcove-report/.</p>
+
+<p><img class="<a" src="href="https://camo.githubusercontent.com/465d99ff53adad12faf5f51802b51e12cba4d074/687474703a2f2f692e696d6775722e636f6d2f344464496374712e706e673f31">https://camo.githubusercontent.com/465d99ff53adad12faf5f51802b51e12cba4d074/687474703a2f2f692e696d6775722e636f6d2f344464496374712e706e673f31</a>"></p>
+
+<p>Check out the <a href="https://github.com/ioveracker/Alcove/blob/master/README.md">README</a> for more information (be sure to check out the options), or the <a href="https://github.com/ioveracker/AlcoveDemo">demo project</a> to see it in action.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating an Xcode Plugin: A Quick-Start Guide]]></title>
@@ -335,110 +366,6 @@
 <h1>Upload Binary</h1>
 
 <p>Login to iTunes Connect and create a new version of your app.  When you edit the metadata for the new version of your app, you can now edit the name of the app.  Enter the new name for your app, create your new binary, and upload.  If you make it through the review process, your app will be ready to launch under a new name!  As long as you don&rsquo;t change the Bundle Identifier, existing users will receive the update.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Managing Project Dependencies in Xcode: An Introduction to CocoaPods]]></title>
-    <link href="http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods/"/>
-    <updated>2013-07-29T00:00:00-07:00</updated>
-    <id>http://www.overacker.me/blog/2013/07/29/managing-project-dependencies-in-xcode-an-introduction-to-cocoapods</id>
-    <content type="html"><![CDATA[<p>The open-source community for iOS is amazing.  There are so many high-quality, incredibly useful open-source projects out there now that it would be crazy to work on an iOS project without bringing in at least a few open-source projects.  However, manually managing each of the libraries that you bring in can be tedious at best.  Most of them are hosted on <a href="http://github.com">GitHub</a>, which has improved a lot in the last few years to streamline the process.  With <a href="http://mac.github.com">GitHub for Mac</a>, it&rsquo;s easy to quickly clone a project straight from your browser, but you still have to move the appropriate files into <em>your</em> Xcode project.  And then you have to do it all again when the project is updated and you want to take advantage of the latest release.</p>
-
-<p>It doesn&rsquo;t have to be this way.</p>
-
-<!-- more -->
-
-
-<h1>CocoaPods</h1>
-
-<p><a href="http://cocoapods.org">CocoaPods</a> is the best way to manage library dependencies with Xcode.  It&rsquo;s still in the alpha phase, but it&rsquo;s continually being improved.  With CocoaPods, you can easily manage your project dependencies, even specifying the specific version number for each.  This is all tracked in a plaintext file, so you can keep this in your source repository and your whole team will automatically be in sync.  As an added bonus, you won&rsquo;t have to keep the projects in your source repository, so you can keep your repository&rsquo;s footprint small.</p>
-
-<h1>Installation</h1>
-
-<p>CocoaPods is distributed as a <a href="http://ruby-lang.org">Ruby</a> gem.  If you&rsquo;re new to Ruby, you should consider using an environment manager like <a href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/">rbenv</a> to keep track of your Ruby environments.  It&rsquo;s not just for <a href="http://rubyonrails.org/">Rails</a>&mdash;more and more command line tools are being written in Ruby, and they often have specific Ruby version requirements.  I wrote a <a href="http://www.overacker.me/blog/2013/07/10/getting-started-with-rbenv/">simple guide</a> to getting started with rbenv that will have you up and running in no time.</p>
-
-<p>If you don&rsquo;t have it already, install Ruby 2.0.0-p247.  CocoaPods will work in older versions, but I wouldn&rsquo;t go older than 1.9.3.  It&rsquo;s distributed as a gem, so installing is simple.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install cocoapods</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>This will download and install CocoaPods and its dependencies.  (Don&rsquo;t forget to <a href="https://github.com/sstephenson/rbenv#rbenv-rehash">rehash</a> if you&rsquo;re using rbenv.)</p>
-
-<p>Now, perform the initial setup, which will create ~/.cocoapods, setup the initial podspec repos, <a href="https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/command/setup.rb">and more</a>.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>pod setup</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Installation is that simple.  You&rsquo;re ready to get started.</p>
-
-<h1>Podfile</h1>
-
-<p>Dependencies are tracked in a special plaintext file named Podfile.  You should create this file in the same directory as your Xcode project.  The first line of this file tells CocoaPods what platform your project is targeting (iOS or OS X), and the subsequent lines list the dependencies for your project.</p>
-
-<p>E.g., a very simple iOS Podfile specifying the latest LastFm and TestFlightSDK frameworks:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
-</span><span class='line'>pod &lsquo;LastFm&rsquo;
-</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Note that the platform is case sensitive.  If you want to specify the version for a pod, simply append the version number like so:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
-</span><span class='line'>pod &lsquo;LastFm&rsquo;
-</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;1.2.6&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>You can also prefix the version number with a <a href="http://docs.rubygems.org/read/chapter/16#page74">version constraint</a> to indicate a range of versions.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Podfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>platform :ios
-</span><span class='line'>pod &lsquo;LastFm&rsquo;
-</span><span class='line'>pod &lsquo;TestFlightSDK&rsquo;, &lsquo;~> 1.2&rsquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Finding the pods you need for your project is simple thanks to the search function on the <a href="http://cocoapods.org/">CocoaPods site</a>.</p>
-
-<h1>Workspace Generation</h1>
-
-<p>Once your Podfile has been defined, the next step is to install the pods and generate the Xcode workspace.  This, too, is quite simple.  In the same directory as your Podfile, run the following command.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>pod install</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>This will download the pods and build a Xcode workspace that includes a Pods target in addition to your Xcode project.  Note that you need to use the .xcworkspace file generated by CocoaPods from now on when working with your project.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Terminal </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>open YourProject.xcworkspace</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Whenever you add a new pod to your Podfile, just run <code>pod install</code> again to regenerate the workspace.</p>
-
-<h1>Source Control</h1>
-
-<p>I like to keep the pods out of my source code repositories.  You can update the ignore file for your source control repository to exclude the Pods/ directory created by CocoaPods.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>.gitignore or .hgignore </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Pods/</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>I like to keep the <code>Podfile</code> and <code>Podfile.lock</code> files in source control so that it&rsquo;s easy to recreate the workspace using <code>pod install</code> after cloning the repository.</p>
-
-<h1>More Info</h1>
-
-<p>This is just the beginning of what CocoaPods can do.  Explore more of the advanced features&mdash;such as specifying pods for certain targets&mdash;in the <a href="http://docs.cocoapods.org/">CocoaPods documentation</a>.</p>
 ]]></content>
   </entry>
   
