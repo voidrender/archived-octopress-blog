@@ -9,7 +9,7 @@
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="I have been spending quite a bit of time working with Xcode Server for continuous integration of a fairly large iOS project. As part of the build &hellip;">
+  <meta name="description" content="I&rsquo;m heading home from my first ever WWDC. What a blast! I&rsquo;m excited to come to San Francisco again next year even if I don&rsquo;t get &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/17/wwdc-2016/">WWDC 2016</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-06-17T22:06:00-07:00" pubdate data-updated="true">June 17, 2016</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;m heading home from my first ever WWDC. What a blast! I&rsquo;m excited to come to San Francisco again next year even if I don&rsquo;t get lucky enough to attend WWDC proper.</p>
+
+<h2>The Keynote</h2>
+
+<p>The first day was filled with excitement, as everyone lined up in front of Bill Graham Civic Auditorium to anxiously await the big announcements for this year. We were not disappointed! Huge announcements all around on macOS, iOS, tvOS, and watchOS. Those have been <a href="http://www.macrumors.com/roundup/wwdc/">covered in depth</a> elsewhere, so I won&rsquo;t go into them here, but needless to say, I was quite pleased.</p>
+
+<h2>The Conference</h2>
+
+<p>Tuesday marked the first day of sessions and labs. I was a bit torn about what to do, as the sessions are all recorded and available to watch any time. Labs are a neat opportunity to meet and talk with Apple engineers, but I didn&rsquo;t really have any pressing questions to bring to the table. I ended up spending around half my time attending sessions and the other half sitting in the area just outside of the labs, where tables had been set up within viewing distance of live broadcasts of select sessions. This gave me a unique opportunity to listen to sessions while coding and occasionally talking to fellow attendees, including some notable open-source contributors such as <a href="https://twitter.com/orta">Orta Therox</a> (<a href="https://cocoapods.org">CocoaPods</a>, <a href="https://artsy.net">Artsy</a>) and <a href="https://twitter.com/KrauseFx">Felix Krause</a> (<a href="https://fastlane.tools">fastlane</a>).</p>
+
+<h2>The Parties</h2>
+
+<p>Something exciting was happening every day, and thanks to <a href="https://2016.wwdcparties.com/parties/">WWDC Parties</a>, we were able to find it all. <a href="https://realm.io">Realm</a> was an amazing host this year, with the challenging <a href="http://nshipster.com">NSHipster</a> Pub Quiz and their 1.0 launch party standing out as highlights of the week. <a href="https://twitter.com/search?q=%23buttonselfiesoiree">#ButtonSelfieSoiree</a> was an absolute blast, and their developers released an app that day which records a few second long GIF and auto-tweeted it with the hashtag. This led to hilarious, rapid-fire GIF selfies happening all over 111 Minna Gallery. Lastly, the official bash was a bit of a flop for me personally, and was the least interesting party of the week. It was basically just like attending a concert with food and drinks around the perimeter.</p>
+
+<h2>The Future</h2>
+
+<p>Next year, I&rsquo;d like to at least pop into <a href="http://altconf.com">AltConf</a> even if I&rsquo;m fortunate enough to attend WWDC again. I&rsquo;ll probably put more emphasis on meeting and greeting, and even less emphasis on sessions. Some of the parties filled up ahead of time, so planning those out in advance might help, although I was pleased with the fun that I had.</p>
+
+<p>I&rsquo;m feeling exhausted but invigorated, and I miss the hell out of my family, but I&rsquo;m really excited with the direction the Apple spaceship is heading and look forward to getting to work. See you next year, Apple!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -330,71 +386,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/03/architecture-headaches-with-cocoapods/">Architecture Headaches With CocoaPods</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-03T18:22:00-07:00" pubdate data-updated="true">August 03, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently inherited an iOS project from another developer.  This project was not using CocoaPods for dependency management, so naturally, I converted it to using CocoaPods as soon as I could.  When I first installed the pods, I received this warning in the console:</p>
-
-<figure class='code'><figcaption><span>Terminal </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[!] Found multiple values (`armv7`, `armv7s`) for the
-</span><span class='line'>architectures (`ARCHS`) build setting for the `Pods` 
-</span><span class='line'>target definition. Using the first.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It seemed harmless enough, and the project built without problems for the iPhone simulator.  I carried on for a few weeks working on new features, and then I tried to build a version of the app targeting the iOS devices.  Suddenly, I had linker errors.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"_OBJC_CLASS_$_FBSession", referenced from:
-</span><span class='line'>  objc-class-ref in MySourceFile.m
-</span><span class='line'>  ...
-</span><span class='line'>ld: symbol(s) not found for architecture armv7s</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I looked around for solutions, but of course with linker errors it&rsquo;s can be very difficult to find answers for a particular issue.  Finally, after many hours of searching, reading, and highly scientific trial and error, I decided to look into the multiple architecture warning from CocoaPods, and that&rsquo;s where I found my issue.  In this particular case, the Pods-* targets in my Pods project were targeting armv7 (which is pretty obvious from the CocoaPods warning, but a few weeks had passed), whereas my main app target architectures included both armv7 and armv7s, hence the linker error above.</p>
-
-<p>The solution was to update the target architectures for the app to <code>$(ARCHS_STANDARD_32_BIT)</code> instead of manually specifying both <code>armv7</code> and <code>armv7s</code>.  Then, when running <code>pod install</code>, the <code>$(ARCHS_STANDARD_32_BIT)</code> is set for the Pods-* projects as well and everything is happy.</p>
-
-<p><em>Note: the reason armv7 and armv7s architectures had been specified for the app is that there is a dependency on a library that does not yet support 64-bit architectures.  It looks like <code>$(ARCHS_STANDARD_32_BIT)</code> is a much better way to handle that situation.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -412,7 +403,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
+  Copyright &copy; 2016 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
 	  
 	  Hosted by <a href="http://heroku.com">Heroku</a>. 

@@ -1,0 +1,22 @@
+---
+layout: post
+title: "WWDC 2016"
+date: 2016-06-17 22:06
+comments: true
+categories: wwdc apple conference
+---
+I'm heading home from my first ever WWDC. What a blast! I'm excited to come to San Francisco again next year even if I don't get lucky enough to attend WWDC proper.
+
+## The Keynote
+The first day was filled with excitement, as everyone lined up in front of Bill Graham Civic Auditorium to anxiously await the big announcements for this year. We were not disappointed! Huge announcements all around on macOS, iOS, tvOS, and watchOS. Those have been [covered in depth](http://www.macrumors.com/roundup/wwdc/) elsewhere, so I won't go into them here, but needless to say, I was quite pleased.
+
+## The Conference
+Tuesday marked the first day of sessions and labs. I was a bit torn about what to do, as the sessions are all recorded and available to watch any time. Labs are a neat opportunity to meet and talk with Apple engineers, but I didn't really have any pressing questions to bring to the table. I ended up spending around half my time attending sessions and the other half sitting in the area just outside of the labs, where tables had been set up within viewing distance of live broadcasts of select sessions. This gave me a unique opportunity to listen to sessions while coding and occasionally talking to fellow attendees, including some notable open-source contributors such as [Orta Therox](https://twitter.com/orta) ([CocoaPods](https://cocoapods.org), [Artsy](https://artsy.net)) and [Felix Krause](https://twitter.com/KrauseFx) ([fastlane](https://fastlane.tools)).
+
+## The Parties
+Something exciting was happening every day, and thanks to [WWDC Parties](https://2016.wwdcparties.com/parties/), we were able to find it all. [Realm](https://realm.io) was an amazing host this year, with the challenging [NSHipster](http://nshipster.com) Pub Quiz and their 1.0 launch party standing out as highlights of the week. [#ButtonSelfieSoiree](https://twitter.com/search?q=%23buttonselfiesoiree) was an absolute blast, and their developers released an app that day which records a few second long GIF and auto-tweeted it with the hashtag. This led to hilarious, rapid-fire GIF selfies happening all over 111 Minna Gallery. Lastly, the official bash was a bit of a flop for me personally, and was the least interesting party of the week. It was basically just like attending a concert with food and drinks around the perimeter.
+
+## The Future
+Next year, I'd like to at least pop into [AltConf](http://altconf.com) even if I'm fortunate enough to attend WWDC again. I'll probably put more emphasis on meeting and greeting, and even less emphasis on sessions. Some of the parties filled up ahead of time, so planning those out in advance might help, although I was pleased with the fun that I had.
+
+I'm feeling exhausted but invigorated, and I miss the hell out of my family, but I'm really excited with the direction the Apple spaceship is heading and look forward to getting to work. See you next year, Apple!

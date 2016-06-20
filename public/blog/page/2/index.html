@@ -9,7 +9,7 @@
   <meta name="author" content="Isaac Overacker">
 
   
-  <meta name="description" content="As a longtime user of TestFlight for both test build distribution and usage analytics, I was extremely disappointed to find that they have cancelled &hellip;">
+  <meta name="description" content="I recently inherited an iOS project from another developer. This project was not using CocoaPods for dependency management, so naturally, I converted &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/03/architecture-headaches-with-cocoapods/">Architecture Headaches With CocoaPods</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-03T18:22:00-07:00" pubdate data-updated="true">August 03, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently inherited an iOS project from another developer.  This project was not using CocoaPods for dependency management, so naturally, I converted it to using CocoaPods as soon as I could.  When I first installed the pods, I received this warning in the console:</p>
+
+<figure class='code'><figcaption><span>Terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[!] Found multiple values (`armv7`, `armv7s`) for the
+</span><span class='line'>architectures (`ARCHS`) build setting for the `Pods` 
+</span><span class='line'>target definition. Using the first.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It seemed harmless enough, and the project built without problems for the iPhone simulator.  I carried on for a few weeks working on new features, and then I tried to build a version of the app targeting the iOS devices.  Suddenly, I had linker errors.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"_OBJC_CLASS_$_FBSession", referenced from:
+</span><span class='line'>  objc-class-ref in MySourceFile.m
+</span><span class='line'>  ...
+</span><span class='line'>ld: symbol(s) not found for architecture armv7s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I looked around for solutions, but of course with linker errors it&rsquo;s can be very difficult to find answers for a particular issue.  Finally, after many hours of searching, reading, and highly scientific trial and error, I decided to look into the multiple architecture warning from CocoaPods, and that&rsquo;s where I found my issue.  In this particular case, the Pods-* targets in my Pods project were targeting armv7 (which is pretty obvious from the CocoaPods warning, but a few weeks had passed), whereas my main app target architectures included both armv7 and armv7s, hence the linker error above.</p>
+
+<p>The solution was to update the target architectures for the app to <code>$(ARCHS_STANDARD_32_BIT)</code> instead of manually specifying both <code>armv7</code> and <code>armv7s</code>.  Then, when running <code>pod install</code>, the <code>$(ARCHS_STANDARD_32_BIT)</code> is set for the Pods-* projects as well and everything is happy.</p>
+
+<p><em>Note: the reason armv7 and armv7s architectures had been specified for the app is that there is a dependency on a library that does not yet support 64-bit architectures.  It looks like <code>$(ARCHS_STANDARD_32_BIT)</code> is a much better way to handle that situation.</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -286,79 +351,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/11/octopress-themes-opening-links-in-a-new-window/">Octopress Themes: Opening Links in a New Window</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-11T14:00:00-07:00" pubdate data-updated="true">July 11, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I just rolled out a change to the <a href="https://github.com/ioveracker/mnml">mnml</a> theme to cause links to be opened in a new window.  If you&rsquo;re looking to do the same thing for your <a href="http://octopress.org">Octopress</a> theme, it requires a simple change to the <code>/source/javascripts/octopress.js</code> file.  Open that file and add the following to the <a href="http://learn.jquery.com/using-jquery-core/document-ready/">$(document).ready()</a> function:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="c1">// You probably already have some code here.</span>
-</span><span class='line'>    <span class="c1">// Just add this to the end of the function.</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-</span><span class='line'>                <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
-</span><span class='line'>                <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span> <span class="s1">&#39;_blank&#39;</span><span class="p">);</span>
-</span><span class='line'>            <span class="p">});</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You could also do this in any web app that uses <a href="http://jquery.com">jQuery</a>, of course.</p>
-
-<p>(Hat-tip to <a href="http://www.adrikodde.nl/blog/2012/octopress-links-new-window/">Adri Kodde</a> for posting a snippet about this.)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -378,7 +370,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
+  Copyright &copy; 2016 - <a href="mailto:isaac@overacker.me">Isaac Overacker</a><br/>
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
 	  
 	  Hosted by <a href="http://heroku.com">Heroku</a>. 

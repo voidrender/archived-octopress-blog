@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: conference | Isaac Overacker]]></title>
+  <link href="http://www.overacker.me/blog/categories/conference/atom.xml" rel="self"/>
+  <link href="http://www.overacker.me/"/>
+  <updated>2016-06-19T22:18:45-07:00</updated>
+  <id>http://www.overacker.me/</id>
+  <author>
+    <name><![CDATA[Isaac Overacker]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[WWDC 2016]]></title>
+    <link href="http://www.overacker.me/blog/2016/06/17/wwdc-2016/"/>
+    <updated>2016-06-17T22:06:00-07:00</updated>
+    <id>http://www.overacker.me/blog/2016/06/17/wwdc-2016</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m heading home from my first ever WWDC. What a blast! I&rsquo;m excited to come to San Francisco again next year even if I don&rsquo;t get lucky enough to attend WWDC proper.</p>
+
+<h2>The Keynote</h2>
+
+<p>The first day was filled with excitement, as everyone lined up in front of Bill Graham Civic Auditorium to anxiously await the big announcements for this year. We were not disappointed! Huge announcements all around on macOS, iOS, tvOS, and watchOS. Those have been <a href="http://www.macrumors.com/roundup/wwdc/">covered in depth</a> elsewhere, so I won&rsquo;t go into them here, but needless to say, I was quite pleased.</p>
+
+<h2>The Conference</h2>
+
+<p>Tuesday marked the first day of sessions and labs. I was a bit torn about what to do, as the sessions are all recorded and available to watch any time. Labs are a neat opportunity to meet and talk with Apple engineers, but I didn&rsquo;t really have any pressing questions to bring to the table. I ended up spending around half my time attending sessions and the other half sitting in the area just outside of the labs, where tables had been set up within viewing distance of live broadcasts of select sessions. This gave me a unique opportunity to listen to sessions while coding and occasionally talking to fellow attendees, including some notable open-source contributors such as <a href="https://twitter.com/orta">Orta Therox</a> (<a href="https://cocoapods.org">CocoaPods</a>, <a href="https://artsy.net">Artsy</a>) and <a href="https://twitter.com/KrauseFx">Felix Krause</a> (<a href="https://fastlane.tools">fastlane</a>).</p>
+
+<h2>The Parties</h2>
+
+<p>Something exciting was happening every day, and thanks to <a href="https://2016.wwdcparties.com/parties/">WWDC Parties</a>, we were able to find it all. <a href="https://realm.io">Realm</a> was an amazing host this year, with the challenging <a href="http://nshipster.com">NSHipster</a> Pub Quiz and their 1.0 launch party standing out as highlights of the week. <a href="https://twitter.com/search?q=%23buttonselfiesoiree">#ButtonSelfieSoiree</a> was an absolute blast, and their developers released an app that day which records a few second long GIF and auto-tweeted it with the hashtag. This led to hilarious, rapid-fire GIF selfies happening all over 111 Minna Gallery. Lastly, the official bash was a bit of a flop for me personally, and was the least interesting party of the week. It was basically just like attending a concert with food and drinks around the perimeter.</p>
+
+<h2>The Future</h2>
+
+<p>Next year, I&rsquo;d like to at least pop into <a href="http://altconf.com">AltConf</a> even if I&rsquo;m fortunate enough to attend WWDC again. I&rsquo;ll probably put more emphasis on meeting and greeting, and even less emphasis on sessions. Some of the parties filled up ahead of time, so planning those out in advance might help, although I was pleased with the fun that I had.</p>
+
+<p>I&rsquo;m feeling exhausted but invigorated, and I miss the hell out of my family, but I&rsquo;m really excited with the direction the Apple spaceship is heading and look forward to getting to work. See you next year, Apple!</p>
+]]></content>
+  </entry>
+  
+</feed>
